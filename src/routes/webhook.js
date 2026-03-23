@@ -18,45 +18,67 @@ const MENU = `¡Hola! 👋 Soy el asistente del consultorio Torrado & Berney.
 const RESPUESTAS = {
   '1': `🕐 *Horarios de atención*
 
-📍 *Olavarría* — Rivadavia 2826
-Lunes a Viernes de 8:00 a 12:00 y de 16:00 a 20:00
+⚠️ Los horarios son estimativos. Para ver disponibilidad real, pedí turno online.
 
-📍 *Bolívar* — Consultorio Médico Belgrano
-Consultar disponibilidad al sacar turno.
+👶 *Dr. Pablo Torrado — Oftalmología Infantil*
 
-📞 Tel: (02284) 441122`,
+📍 Olavarría — Vicente López 2061
+• Lunes: 12:00 a 17:30 hs
+• Martes: 10:30 a 17:30 hs
+• Jueves: 08:00 a 13:30 hs
+• Viernes: 08:00 a 14:00 hs
+
+📍 Bolívar — Laprida 156
+• Miércoles: 09:00 a 15:55 hs
+
+👁️ *Dra. Paula Berney — Oftalmología General*
+
+📍 Olavarría — Vicente López 2061
+• Lunes: 12:00 a 16:20 hs
+• Martes: 09:00 a 14:40 hs
+• Miércoles: 11:20 a 15:40 hs
+• Jueves: 09:00 a 15:20 hs
+• Viernes: 09:00 a 14:40 hs`,
 
   '2': `📅 *Sacar un turno*
 
-Elegí el profesional y hacé click en el link para agendar:
+👶 *Dr. Pablo Torrado — Oftalmología Infantil*
 
-👶 *Dr. Pablo Torrado — Oftalmología Infantil (Olavarría)*
+📍 Olavarría:
 https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado?originType=medic-search&
 
-👶 *Dr. Pablo Torrado — Oftalmología Infantil (Bolívar)*
+📍 Bolívar:
 https://paciente.docturno.com/agenda/consultorio-medico-belgrano/torrado-pablo-a?originType=medic-page&
 
-👁️ *Dra. Paula Berney — Oftalmología General (Olavarría)*
-https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&`,
+——————————————
+
+👁️ *Dra. Paula Berney — Oftalmología General*
+
+🔹 Consulta general → pedí turno online:
+https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&
+
+🔹 Estudios o cirugía → comunicarse directamente con el consultorio:
+📞 Tel fijo: (02284) 416078
+📱 WhatsApp: (02284) 594020`,
 
   '3': `❌ *Cancelar un turno*
 
 Para cancelar, escribí tu nombre y el turno que querés cancelar.
 Una persona del consultorio te va a responder a la brevedad.
 
-⏰ Horario de atención: Lunes a Viernes de 8:00 a 20:00`,
+⏰ Atención: Lunes a Viernes en horario de consultorio`,
 
   '4': `🧾 *Factura digital*
 
 Esta función estará disponible próximamente.
-Por ahora, solicitá tu factura llamando al (02284) 441122 o escribiendo "factura" junto con tus datos (nombre completo y DNI) y te la enviamos.`,
+Por ahora, solicitá tu factura llamando al (02284) 416078 o escribiendo tu nombre completo y DNI y te la enviamos.`,
 
   '5': `📍 *Contacto y dirección*
 
 🏥 Consultorio Torrado & Berney
-📍 Rivadavia 2826, Olavarría, Buenos Aires
-📞 (02284) 441122
-🕐 Lunes a Viernes de 8:00 a 12:00 y de 16:00 a 20:00
+📍 Vicente López 2061, Olavarría, Buenos Aires
+📞 Tel fijo: (02284) 416078
+📱 WhatsApp: (02284) 594020
 
 Para cualquier otra consulta, escribí tu mensaje y te responderemos a la brevedad.`,
 };
