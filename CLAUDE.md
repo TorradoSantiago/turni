@@ -34,21 +34,28 @@ src/
 ```
 
 ## Médicos y links de turnos
+
+> **Dirección del consultorio (ambos):** Vicente López 2061, Olavarría, Buenos Aires
+> **Tel fijo:** (02284) 416078 — **WhatsApp:** (02284) 594020
+
 - **Dr. Pablo Torrado — Oftalmología Infantil (Olavarría)**
   - Agenda: https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado?originType=medic-search&
-  - Dirección: Rivadavia 2826, Olavarría, Buenos Aires
-  - Teléfono: (02284) 441122
+  - Dirección: Vicente López 2061, Olavarría, Buenos Aires
+  - Horarios estimativos: Lun 12–17:30, Mar 10:30–17:30, Jue 8–13:30, Vie 8–14
 
 - **Dr. Pablo Torrado — Oftalmología Infantil (Bolívar)**
   - Agenda: https://paciente.docturno.com/agenda/consultorio-medico-belgrano/torrado-pablo-a?originType=medic-page&
-  - Dirección: Av. Belgrano, Bolívar, Buenos Aires
+  - Dirección: Laprida 156, Bolívar, Buenos Aires
+  - Horarios estimativos: Mié 9–15:55
 
 - **Dra. Paula Berney — Oftalmología General (Olavarría)**
   - Agenda: https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&
-  - Dirección: Rivadavia 2826, Olavarría, Buenos Aires
+  - Dirección: Vicente López 2061, Olavarría, Buenos Aires
+  - Horarios estimativos: Lun 12–16:20, Mar 9–14:40, Mié 11:20–15:40, Jue 9–15:20, Vie 9–14:40
+  - Estudios y cirugías: se agenda por teléfono fijo o WhatsApp (no por DocTurno)
 
 ## Decisiones de diseño
-- **Sin submenús**: sin estado guardado, si el usuario escribe "2" no podemos saber si es del menú principal o de un submenú. Los 3 links de turno se mandan juntos.
+- **Sin submenús (Opción A)**: sin estado guardado. Opción 2 muestra toda la info de turnos en un solo mensaje: links de Pablo + para Paula diferencia consulta general (DocTurno) de estudios/cirugía (teléfono directo).
 - **Sin base de datos**: todo en memoria, las respuestas son estáticas.
 - **Sin IA por ahora**: respuestas fijas por número, no lenguaje natural.
 - **Cancelar = handoff humano**: el bot avisa que alguien lo va a atender, la secretaria responde desde WhatsApp Web.
