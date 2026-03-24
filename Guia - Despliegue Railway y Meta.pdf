@@ -1,0 +1,183 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 6 0 R >>
+endobj
+5 0 obj
+<< /Length 2386 >>
+stream
+BT
+/F2 18 Tf
+1 0 0 1 50 800 Tm (Guia de despliegue  Turni Bot de WhatsApp) Tj
+/F2 13 Tf
+1 0 0 1 50 777 Tm (Consultorio Torrado & Berney) Tj
+/F1 10 Tf
+1 0 0 1 50 751 Tm (Este documento explica como conectar el bot a Railway y a Meta Business.) Tj
+/F1 10 Tf
+1 0 0 1 50 736 Tm (Leerlo antes de cualquier cambio en produccion.) Tj
+/F2 13 Tf
+1 0 0 1 50 713 Tm (Variables de entorno necesarias) Tj
+/F1 10 Tf
+1 0 0 1 50 687 Tm (Estas variables van SOLO en Railway. Nunca en el codigo ni en GitHub.) Tj
+/F1 10 Tf
+1 0 0 1 50 664 Tm (  WHATSAPP_TOKEN           Token de acceso de Meta \(expira; ver punto 3\)) Tj
+/F1 10 Tf
+1 0 0 1 50 649 Tm (  WHATSAPP_PHONE_NUMBER_ID ID del numero de WhatsApp Business) Tj
+/F1 10 Tf
+1 0 0 1 50 634 Tm (  WHATSAPP_VERIFY_TOKEN    Token para verificar el webhook) Tj
+/F1 10 Tf
+1 0 0 1 50 619 Tm (                           Valor: turni-webhook-2024) Tj
+/F1 10 Tf
+1 0 0 1 50 604 Tm (  WHATSAPP_GRAPH_VERSION   Version de la API de Meta) Tj
+/F1 10 Tf
+1 0 0 1 50 589 Tm (                           Valor recomendado: v25.0) Tj
+/F1 10 Tf
+1 0 0 1 50 574 Tm (  MOCK_WHATSAPP            false en produccion, true para testing local) Tj
+/F1 10 Tf
+1 0 0 1 50 559 Tm (  PORT                     Railway lo asigna automaticamente) Tj
+/F1 10 Tf
+1 0 0 1 50 536 Tm (  Formato correcto en Raw Editor \(sin comillas\):) Tj
+/F1 10 Tf
+1 0 0 1 50 521 Tm (    WHATSAPP_TOKEN=EAAAxxxxxx...) Tj
+/F1 10 Tf
+1 0 0 1 50 506 Tm (    WHATSAPP_PHONE_NUMBER_ID=1067008559821013) Tj
+/F1 10 Tf
+1 0 0 1 50 491 Tm (    WHATSAPP_VERIFY_TOKEN=turni-webhook-2024) Tj
+/F1 10 Tf
+1 0 0 1 50 476 Tm (    WHATSAPP_GRAPH_VERSION=v25.0) Tj
+/F1 10 Tf
+1 0 0 1 50 461 Tm (    MOCK_WHATSAPP=false) Tj
+/F2 13 Tf
+1 0 0 1 50 438 Tm (Configurar Railway paso a paso) Tj
+/F1 10 Tf
+1 0 0 1 50 412 Tm (  1. Entrar a railway.app con la cuenta del consultorio) Tj
+/F1 10 Tf
+1 0 0 1 50 397 Tm (  2. Abrir el proyecto turni) Tj
+/F1 10 Tf
+1 0 0 1 50 382 Tm (  3. Ir a Variables -> Raw Editor) Tj
+/F1 10 Tf
+1 0 0 1 50 367 Tm (  4. Pegar las variables con el formato de arriba) Tj
+/F1 10 Tf
+1 0 0 1 50 352 Tm (  5. Hacer clic en Update Variables) Tj
+/F1 10 Tf
+1 0 0 1 50 337 Tm (  6. Volver al canvas -> Apply changes -> Deploy) Tj
+/F1 10 Tf
+1 0 0 1 50 322 Tm (  7. Esperar Deployment successful en Deployments) Tj
+/F1 10 Tf
+1 0 0 1 50 299 Tm (  IMPORTANTE: los cambios de variables no se aplican hasta hacer Deploy.) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 3276 >>
+stream
+BT
+/F2 13 Tf
+1 0 0 1 50 800 Tm (El token de Meta expira  como renovarlo) Tj
+/F1 10 Tf
+1 0 0 1 50 774 Tm (El token temporal del panel de Meta dura pocas horas.) Tj
+/F1 10 Tf
+1 0 0 1 50 751 Tm (  1. Entrar a developers.facebook.com) Tj
+/F1 10 Tf
+1 0 0 1 50 736 Tm (  2. Ir a la app Turni -> WhatsApp -> Configuracion de la API) Tj
+/F1 10 Tf
+1 0 0 1 50 721 Tm (  3. En Token de acceso hacer clic en Generar) Tj
+/F1 10 Tf
+1 0 0 1 50 706 Tm (  4. Copiar el token nuevo \(no compartirlo por chat\)) Tj
+/F1 10 Tf
+1 0 0 1 50 691 Tm (  5. En Railway: Variables -> Raw Editor -> reemplazar WHATSAPP_TOKEN) Tj
+/F1 10 Tf
+1 0 0 1 50 676 Tm (  6. Update Variables -> Apply changes -> Deploy) Tj
+/F1 10 Tf
+1 0 0 1 50 653 Tm (  Para produccion real: usar un System User Token que no vence.) Tj
+/F1 10 Tf
+1 0 0 1 50 638 Tm (  Configurarlo desde Meta Business Suite -> Configuracion -> Usuarios del sistema.) Tj
+/F2 13 Tf
+1 0 0 1 50 615 Tm (Configurar el webhook en Meta) Tj
+/F1 10 Tf
+1 0 0 1 50 589 Tm (  1. Entrar a developers.facebook.com -> app Turni) Tj
+/F1 10 Tf
+1 0 0 1 50 574 Tm (  2. Ir a WhatsApp -> Configuracion \(no Configuracion de la API\)) Tj
+/F1 10 Tf
+1 0 0 1 50 559 Tm (  3. En Webhook hacer clic en Editar) Tj
+/F1 10 Tf
+1 0 0 1 50 544 Tm (  4. URL de devolucion de llamada:) Tj
+/F1 10 Tf
+1 0 0 1 50 529 Tm (       https://turni-production.up.railway.app/webhook) Tj
+/F1 10 Tf
+1 0 0 1 50 514 Tm (  5. Token de verificacion: turni-webhook-2024) Tj
+/F1 10 Tf
+1 0 0 1 50 499 Tm (  6. Verificar que el toggle Adjunta certificado este APAGADO) Tj
+/F1 10 Tf
+1 0 0 1 50 484 Tm (  7. Hacer clic en Verificar y guardar) Tj
+/F1 10 Tf
+1 0 0 1 50 469 Tm (  8. Si la URL queda visible = verificacion OK) Tj
+/F1 10 Tf
+1 0 0 1 50 454 Tm (  9. En Campos de webhook suscribirse al campo: messages) Tj
+/F2 13 Tf
+1 0 0 1 50 431 Tm (Numeros y configuracion del test) Tj
+/F1 10 Tf
+1 0 0 1 50 405 Tm (  Numero de prueba Meta: +1 \(555\) 147-7297) Tj
+/F1 10 Tf
+1 0 0 1 50 390 Tm (  PHONE_NUMBER_ID del numero de prueba: 1067008559821013) Tj
+/F1 10 Tf
+1 0 0 1 50 375 Tm (  Recipient autorizado: agregar desde Configuracion de la API en Meta) Tj
+/F1 10 Tf
+1 0 0 1 50 352 Tm (  Para usar el numero real del consultorio \(produccion\):) Tj
+/F1 10 Tf
+1 0 0 1 50 337 Tm (  Requiere migrar el numero  la secretaria pierde WhatsApp Web.) Tj
+/F1 10 Tf
+1 0 0 1 50 322 Tm (  Planificarlo con tiempo y avisar a los pacientes antes de activar.) Tj
+/F2 13 Tf
+1 0 0 1 50 299 Tm (Verificar que todo funciona) Tj
+/F1 10 Tf
+1 0 0 1 50 273 Tm (  1. Abrir https://turni-production.up.railway.app) Tj
+/F1 10 Tf
+1 0 0 1 50 258 Tm (     Debe aparecer: Bot de WhatsApp Torrado & Berney activo) Tj
+/F1 10 Tf
+1 0 0 1 50 243 Tm (  2. Mandar un mensaje desde WhatsApp al numero configurado) Tj
+/F1 10 Tf
+1 0 0 1 50 228 Tm (  3. Ver Railway -> Deployments -> View logs) Tj
+/F1 10 Tf
+1 0 0 1 50 213 Tm (     Debe aparecer: Mensaje de [numero]: "...") Tj
+/F1 10 Tf
+1 0 0 1 50 198 Tm (     Debe aparecer: Respuesta enviada a [numero]) Tj
+/F1 10 Tf
+1 0 0 1 50 183 Tm (  4. El bot responde con el menu en WhatsApp) Tj
+/F1 10 Tf
+1 0 0 1 50 160 Tm (  Si aparece error 401: el token de Meta vencio o no se guardo bien.) Tj
+/F1 10 Tf
+1 0 0 1 50 145 Tm (  Si aparece error 400: revisar PHONE_NUMBER_ID y recipient autorizado.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000393 00000 n 
+0000002831 00000 n 
+0000006159 00000 n 
+0000006229 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6304
+%%EOF
