@@ -113,12 +113,13 @@ router.post('/', async (req, res) => {
   res.sendStatus(200);
 
   try {
-    const messages = req.body.entry?.[0]?.changes?.[0]?.value?.messages;
+    const value = req.body.entry?.[0]?.changes?.[0]?.value;
+    const messages = value?.messages;
 
     if (!messages || !messages[0]) return;
 
     const message = messages[0];
-    const from = message.from;
+    const from = value?.contacts?.[0]?.wa_id || message.from;
 
     // Solo procesamos mensajes de texto
     if (message.type !== 'text') {
