@@ -1,172 +1,141 @@
-# Turni — Bot de WhatsApp para el Consultorio Torrado & Berney
+# 🤖 Turni — Bot de WhatsApp para el Consultorio Torrado & Berney
 
-> Un bot que responde automáticamente a los pacientes del consultorio oftalmológico.
-> Los pacientes escriben un número del 1 al 5 (o 0 para hablar con la secretaría)
-> y el bot les manda la info que necesitan al toque, las 24 horas.
+> Un bot de WhatsApp que responde automáticamente a los pacientes del consultorio oftalmológico. Los pacientes escriben un número del 1 al 5 y el bot les manda la info que necesitan al toque.
 
 ---
 
-## Qué hace el bot
+## 🏥 ¿Qué hace el bot?
 
-Cuando un paciente le escribe al número de WhatsApp del consultorio, recibe este menú:
+Cuando un paciente le escribe al número de WhatsApp del consultorio, el bot responde con un menú:
 
 ```
-1 — Horarios de atención
-2 — Sacar un turno        ← link directo a DocTurno
-3 — Cancelar un turno     ← deriva a la secretaría
-4 — Factura digital       ← próximamente automático
-5 — Dirección y contacto
-0 — Hablar con la secretaría
+1️⃣ Horarios de atención
+2️⃣ Sacar un turno
+3️⃣ Cancelar un turno
+4️⃣ Factura digital
+5️⃣ Otra consulta
 ```
 
-El paciente escribe el número y recibe la respuesta en segundos.
-Sin que nadie del consultorio tenga que estar mirando el teléfono.
+El paciente escribe el número y el bot responde automáticamente con la info correspondiente. Sin necesidad de que nadie esté mirando el teléfono.
 
 ---
 
-## Estructura del proyecto
+## 🗂️ ¿Cómo está armado?
 
-```
-turni/
-├── src/
-│   ├── server.js              ← Arranca el servidor (punto de entrada)
-│   ├── routes/
-│   │   └── webhook.js         ← Recibe mensajes y decide qué responder
-│   └── services/
-│       ├── whatsapp.js        ← Envía mensajes via API de Meta
-│       └── afip.js            ← Futura facturación automática (pendiente)
-├── test.js                    ← Simula mensajes para probar sin WhatsApp real
-├── .env                       ← Credenciales privadas (NO se sube a GitHub)
-├── .env.example               ← Plantilla del .env (sí se sube, sin datos reales)
-└── flow-bot.html              ← Diagrama visual del flujo del bot
-```
+Solo 3 archivos que importan:
 
-**Cómo fluye un mensaje:**
-1. El paciente escribe en WhatsApp
-2. Meta envía ese mensaje a `/webhook` de nuestro servidor
-3. `webhook.js` lee el texto, busca la respuesta y la envía via `whatsapp.js`
-4. El paciente recibe la respuesta en segundos
+| Archivo | ¿Qué hace? |
+|---|---|
+| `src/server.js` | Levanta el servidor y lo pone a escuchar mensajes |
+| `src/routes/webhook.js` | Recibe los mensajes y decide qué responder |
+| `src/services/whatsapp.js` | Envía las respuestas a través de la API de Meta |
+
+Y uno extra para el futuro:
+
+| Archivo | ¿Qué hace? |
+|---|---|
+| `src/services/afip.js` | (Todavía no funciona) Va a emitir facturas automáticas |
 
 ---
 
-## Cómo correrlo en tu compu (modo desarrollo)
+## 🚀 ¿Cómo lo arranco en mi compu?
 
-### 1. Clonar e instalar
+### 1. Instalá las dependencias
 ```bash
-git clone https://github.com/TorradoSantiago/turni.git
-cd turni
 npm install
 ```
 
-### 2. Configurar credenciales
-Copiá `.env.example` a `.env` y completá los valores:
+### 2. Configurá las variables de entorno
+Copiá el archivo `.env.example` a `.env` y completá los valores:
 ```
-WHATSAPP_TOKEN=           ← Token de la app en Meta for Developers
+WHATSAPP_TOKEN=           ← Token de Meta
 WHATSAPP_PHONE_NUMBER_ID= ← ID del número de WhatsApp Business
 WHATSAPP_VERIFY_TOKEN=    ← Contraseña arbitraria para verificar el webhook
 PORT=3000
-MOCK_WHATSAPP=false       ← Poné true para probar sin Meta
+MOCK_WHATSAPP=false       ← Poné true para testear sin Meta
 ```
 
-### 3. Probar sin WhatsApp real (recomendado para empezar)
+### 3. Levantá el servidor
 ```bash
-# En una terminal: levantá el servidor
-MOCK_WHATSAPP=true node src/server.js
+node src/server.js
+```
 
-# En otra terminal: enviá mensajes de prueba
+Deberías ver esto:
+```
+🚀 Servidor escuchando en puerto 3000
+```
+
+### 4. Probalo localmente (sin WhatsApp real)
+```bash
 node test.js
 ```
 
-Vas a ver las respuestas del bot directamente en la consola, sin necesitar credenciales.
+Esto simula mensajes y muestra cómo respondería el bot.
 
-### 4. Probar con WhatsApp real (modo producción local)
+---
+
+## 🌐 ¿Cómo lo conecto a WhatsApp real?
+
+El bot tiene que estar en internet para que Meta le pueda mandar los mensajes. Para eso usamos **ngrok** — una herramienta que crea un túnel entre internet y tu compu.
+
+### Paso 1 — Levantá ngrok
+Con el servidor corriendo en una terminal, abrí otra y ejecutá:
 ```bash
-# Terminal 1: servidor
-node src/server.js
-
-# Terminal 2: túnel ngrok (exponé el puerto a internet)
 ngrok http 3000
 ```
 
-Copiá la URL de ngrok (ej: `https://abc123.ngrok-free.dev`) y configurala como
-webhook en Meta for Developers → tu app → WhatsApp → Configuración → Webhook.
+Vas a ver algo así:
+```
+Forwarding  https://algo-random.ngrok-free.dev → http://localhost:3000
+```
+
+Copiá esa URL (la que empieza con `https://`).
+
+### Paso 2 — Configurá el webhook en Meta
+1. Entrá a [developers.facebook.com](https://developers.facebook.com/apps/)
+2. Abrí la app **Turni**
+3. Ir a **WhatsApp → Configuración**
+4. En **Webhook**, pegá: `https://tu-url-de-ngrok.ngrok-free.dev/webhook`
+5. En **Token de verificación**: `turni-webhook-2024`
+6. Hacé click en **Verificar y guardar**
+
+### Paso 3 — Agregate como destinatario de prueba
+En la consola de Meta, agregá tu número de WhatsApp personal como número de prueba. Así podés enviarte mensajes desde el número del consultorio.
 
 ---
 
-## Cómo desplegarlo en producción (Railway)
+## 🧪 Probalo en tu WhatsApp
 
-Para que el bot funcione 24/7 sin tener la compu encendida,
-el código se despliega en [Railway](https://railway.app):
-
-1. Entrá a **railway.app** → Login with GitHub
-2. **New Project** → **Deploy from GitHub repo** → elegí `turni`
-3. Agregá las variables de entorno en la sección **Variables** (las mismas del `.env`)
-4. Railway te da una URL pública permanente (ej: `turni.up.railway.app`)
-5. Actualizá esa URL en el webhook de Meta → listo
-
-Cada vez que hagas `git push`, Railway actualiza el bot automáticamente.
+Una vez conectado:
+1. Mandá un mensaje cualquiera al número del consultorio desde tu celu
+2. El bot te debería responder con el menú en segundos
+3. Respondé con `1`, `2`, `3`, `4` o `5` para probar cada opción
 
 ---
 
-## Seguridad
+## 📋 Variables de entorno necesarias
 
-Este bot está diseñado para ser simple y seguro. Esto es lo que lo protege:
-
-### Lo que ya tiene
-- **Sin base de datos**: el bot no guarda ningún dato de los pacientes.
-  No hay historial, no hay nombres, no hay DNIs almacenados. Nada que robar.
-- **Verificación del webhook**: antes de procesar cualquier mensaje, el bot
-  verifica que sea de Meta usando el `WHATSAPP_VERIFY_TOKEN`. Mensajes de
-  otras fuentes son rechazados automáticamente.
-- **Credenciales fuera del código**: el token de acceso y demás claves viven
-  en el `.env`, que está en el `.gitignore`. Nunca se suben a GitHub.
-- **HTTPS obligatorio**: Meta solo acepta webhooks con HTTPS. Tanto ngrok
-  como Railway usan HTTPS por defecto.
-- **Sin ejecución de código externo**: el bot solo mapea números (1, 2, 3...)
-  a textos fijos. No ejecuta nada que venga del paciente.
-
-### Buenas prácticas para mantenerlo seguro
-- **No compartir el `.env`**: si alguien tiene el `WHATSAPP_TOKEN`, puede
-  enviar mensajes en nombre del consultorio. Tratarlo como una contraseña.
-- **Regenerar el token si se filtra**: en Meta for Developers → tu app →
-  WhatsApp → generar nuevo token.
-- **No subir `.env` a GitHub**: ya está en `.gitignore`, pero ojo si se
-  crea un repo nuevo o se clonan archivos manualmente.
-- **Variables de entorno en Railway**: en producción, las credenciales van
-  en el panel de Railway, nunca en el código.
-
-### Lo que NO tiene (y por qué no es un problema ahora)
-- **Rate limiting**: no limita cuántos mensajes puede mandar una persona.
-  No es un problema para el volumen de un consultorio. Se puede agregar si
-  escala.
-- **Autenticación de pacientes**: cualquiera que tenga el número puede
-  escribir. Por el momento está bien — es un servicio público de info.
+| Variable | Para qué sirve |
+|---|---|
+| `WHATSAPP_TOKEN` | Token de acceso de la app de Meta |
+| `WHATSAPP_PHONE_NUMBER_ID` | ID del número de WhatsApp Business |
+| `WHATSAPP_VERIFY_TOKEN` | Token para verificar el webhook (cualquier texto) |
+| `PORT` | Puerto del servidor (default: 3000) |
+| `MOCK_WHATSAPP` | `true` para testear sin Meta, `false` para producción |
 
 ---
 
-## Variables de entorno
+## 🔮 Lo que viene
 
-| Variable | Para qué sirve | Dónde conseguirla |
-|---|---|---|
-| `WHATSAPP_TOKEN` | Token de acceso a la API de Meta | Meta for Developers → tu app → WhatsApp |
-| `WHATSAPP_PHONE_NUMBER_ID` | ID del número de WhatsApp Business | Meta for Developers → tu app → WhatsApp |
-| `WHATSAPP_VERIFY_TOKEN` | Contraseña para verificar el webhook | Inventala vos, tiene que coincidir con Meta |
-| `PORT` | Puerto del servidor | Default: 3000 |
-| `MOCK_WHATSAPP` | `true` para testear sin Meta | Solo para desarrollo |
+- [ ] **Factura digital automática** — integración con AFIP para emitir facturas sin hacer nada manual
+- [ ] **Base de datos** — guardar historial de consultas y turnos
+- [ ] **Lenguaje natural** — que el bot entienda "quiero sacar un turno" además de solo números
+- [ ] **Recordatorios** — que mande un mensaje automático el día antes del turno
 
 ---
 
-## Lo que viene
+## 👨‍💻 Hecho por
 
-- [ ] **Factura digital automática** — integración con AFIP SDK
-- [ ] **Recordatorios de turno** — mensaje automático el día anterior
-- [ ] **Lenguaje natural** — que el bot entienda frases, no solo números
-- [ ] **Base de datos** — para guardar historial de consultas (cuando escale)
+Santiago Torrado — Primer proyecto de automatización para el consultorio familiar.
 
----
-
-## Créditos
-
-Desarrollado por **Santiago Torrado** para el consultorio oftalmológico familiar.
-
-Tecnologías: Node.js · Express · WhatsApp Cloud API (Meta) · Railway
+> *"El mejor código es el que ahorra trabajo sin que nadie se dé cuenta."*

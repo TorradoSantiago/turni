@@ -6,27 +6,19 @@ const whatsapp = require('../services/whatsapp');
 // CONTENIDO DEL BOT — editá solo esta sección
 // =============================================
 
-// Pie que aparece al final de cada respuesta (menos cancelar/secretaría que ya derivan a humano)
-const FOOTER = `
-——————————
-📋 Escribí el número de otra opción o *menú* para volver al inicio.
-❓ ¿Necesitás hablar con nosotros? Escribí *0*`;
-
-const MENU = `¡Hola! 👋 Soy el asistente del consultorio *Torrado & Berney*.
-
+const MENU = `¡Hola! 👋 Soy el asistente del consultorio Torrado & Berney.
 ¿En qué te puedo ayudar?
 
 1️⃣ Horarios de atención
 2️⃣ Sacar un turno
 3️⃣ Cancelar un turno
 4️⃣ Factura digital
-5️⃣ Dirección y contacto
-0️⃣ Hablar con la secretaría`;
+5️⃣ Otra consulta`;
 
 const RESPUESTAS = {
   '1': `🕐 *Horarios de atención*
 
-_Los horarios son estimativos. La disponibilidad real la ves al sacar el turno online._
+⚠️ Los horarios son estimativos. Para ver disponibilidad real, pedí turno online.
 
 👶 *Dr. Pablo Torrado — Oftalmología Infantil*
 
@@ -46,14 +38,11 @@ _Los horarios son estimativos. La disponibilidad real la ves al sacar el turno o
 • Martes: 09:00 a 14:40 hs
 • Miércoles: 11:20 a 15:40 hs
 • Jueves: 09:00 a 15:20 hs
-• Viernes: 09:00 a 14:40 hs` + FOOTER,
+• Viernes: 09:00 a 14:40 hs`,
 
   '2': `📅 *Sacar un turno*
 
-Tocá el link del médico que necesitás y elegí el día y hora que mejor te quede 👇
-
-——————————
-👶 *Dr. Torrado — Oftalmología Infantil*
+👶 *Dr. Pablo Torrado — Oftalmología Infantil*
 
 📍 Olavarría:
 https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado?originType=medic-search&
@@ -61,38 +50,37 @@ https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado
 📍 Bolívar:
 https://paciente.docturno.com/agenda/consultorio-medico-belgrano/torrado-pablo-a?originType=medic-page&
 
-——————————
-👁️ *Dra. Berney — Oftalmología General*
+——————————————
 
-📍 Olavarría:
+👁️ *Dra. Paula Berney — Oftalmología General*
+
+🔹 Consulta general → pedí turno online:
 https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&
-——————————
-_¿Necesitás ayuda para sacar el turno? Escribí *0* y te asistimos._`,
+
+🔹 Estudios o cirugía → comunicarse directamente con el consultorio:
+📞 Tel fijo: (02284) 416078
+📱 WhatsApp: (02284) 594020`,
 
   '3': `❌ *Cancelar un turno*
 
-Escribí tu *nombre completo* y *el día y hora del turno* que querés cancelar.
+Para cancelar, escribí tu nombre y el turno que querés cancelar.
+Una persona del consultorio te va a responder a la brevedad.
 
-Una persona del consultorio te va a responder a la brevedad 🙌`,
+⏰ Atención: Lunes a Viernes en horario de consultorio`,
 
   '4': `🧾 *Factura digital*
 
 Esta función estará disponible próximamente.
+Por ahora, solicitá tu factura llamando al (02284) 416078 o escribiendo tu nombre completo y DNI y te la enviamos.`,
 
-Por ahora, para solicitar tu factura escribí tu *nombre completo y DNI* y te la enviamos.` + FOOTER,
+  '5': `📍 *Contacto y dirección*
 
-  '5': `📍 *Dirección y contacto*
-
-🏥 *Consultorio Torrado & Berney*
+🏥 Consultorio Torrado & Berney
 📍 Vicente López 2061, Olavarría, Buenos Aires
-📞 Tel: (02284) 416078
-📱 WhatsApp: (02284) 594020` + FOOTER,
+📞 Tel fijo: (02284) 416078
+📱 WhatsApp: (02284) 594020
 
-  '0': `👋 ¡Hola! Te comunicás directamente con el consultorio.
-
-Escribí tu consulta o tu nombre y en cuanto podamos te respondemos.
-
-⏰ Atendemos de Lunes a Viernes en horario de consultorio.`,
+Para cualquier otra consulta, escribí tu mensaje y te responderemos a la brevedad.`,
 };
 
 // =============================================
@@ -100,9 +88,7 @@ Escribí tu consulta o tu nombre y en cuanto podamos te respondemos.
 // =============================================
 
 function obtenerRespuesta(texto) {
-  const limpio = texto.trim().toLowerCase();
-  // Acepta "menu", "menú", "inicio", "hola" como atajos al menú
-  if (['menu', 'menú', 'inicio', 'hola', 'hi', 'buenas'].includes(limpio)) return MENU;
+  const limpio = texto.trim();
   return RESPUESTAS[limpio] || MENU;
 }
 

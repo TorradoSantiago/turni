@@ -1,28 +1,5 @@
-/**
- * ╔══════════════════════════════════════════════════════════════╗
- * ║  Archivo: services/whatsapp.js                               ║
- * ║  Qué hace: envía mensajes de texto a través de la API de Meta ║
- * ╚══════════════════════════════════════════════════════════════╝
- *
- * Este archivo tiene una sola responsabilidad: tomar un texto
- * y enviarlo al número de WhatsApp del paciente usando la API de Meta.
- *
- * Si MOCK_WHATSAPP=true en el .env, no envía nada real —
- * solo imprime el mensaje en la consola. Útil para desarrollo.
- *
- * SEGURIDAD:
- * - El token de acceso (WHATSAPP_TOKEN) nunca está hardcodeado acá.
- *   Vive en el archivo .env que está en el .gitignore (no se sube a GitHub).
- * - Si el token se filtra, regenerarlo en Meta for Developers.
- */
-
 const axios = require('axios');
 
-/**
- * Envía un mensaje de texto a un número de WhatsApp.
- * @param {string} to   - Número destino con código de país, sin + (ej: "5492284511188")
- * @param {string} text - Texto del mensaje
- */
 async function sendTextMessage(to, text) {
   // Modo mock para testing local sin credenciales de Meta
   if (process.env.MOCK_WHATSAPP === 'true') {
