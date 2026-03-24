@@ -113,10 +113,7 @@ router.post('/', async (req, res) => {
   res.sendStatus(200);
 
   try {
-    const entry = req.body.entry && req.body.entry[0];
-    const changes = entry && entry.changes && entry.changes[0];
-    const value = changes && changes.value;
-    const messages = value && value.messages;
+    const messages = req.body.entry?.[0]?.changes?.[0]?.value?.messages;
 
     if (!messages || !messages[0]) return;
 
@@ -137,7 +134,10 @@ router.post('/', async (req, res) => {
     console.log(`✅ Respuesta enviada a ${from}`);
 
   } catch (err) {
-    console.error('❌ Error procesando mensaje:', err.message);
+    console.error('❌ Error procesando mensaje');
+    console.error('status:', err.response?.status);
+    console.error('data:', JSON.stringify(err.response?.data, null, 2));
+    console.error('message:', err.message);
   }
 });
 
