@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Roadmap — Turni Bot · Consultorio Torrado & Berney</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a2e44;
+    }
+
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      background: white;
+      padding: 14mm 16mm 12mm;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1a2e44 0%, #1c6fbe 100%);
+      color: white;
+      border-radius: 18px;
+      padding: 22px 26px;
+      margin-bottom: 26px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .header-icon { font-size: 42px; }
+    .header h1 { font-size: 24px; font-weight: 900; line-height: 1.2; }
+    .header-sub { font-size: 13px; opacity: .8; }
+    .header-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .tag {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── Estado actual ── */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+    .stat-card {
+      border: 1.5px solid #d1e3f8;
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-card .stat-icon { font-size: 26px; margin-bottom: 6px; }
+    .stat-card .stat-num { font-size: 26px; font-weight: 900; color: #1c6fbe; }
+    .stat-card .stat-label { font-size: 11px; color: #5b7a99; margin-top: 2px; }
+
+    /* ── Section title ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid currentColor;
+      margin-top: 24px;
+    }
+    .section-title h2 { font-size: 16px; font-weight: 800; }
+    .section-title.verde { color: #18a05c; border-color: #18a05c; }
+    .section-title.azul { color: #1c6fbe; border-color: #1c6fbe; }
+    .section-title.naranja { color: #d97706; border-color: #d97706; }
+    .section-title.gris { color: #5b7a99; border-color: #5b7a99; }
+
+    /* ── Feature item ── */
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border: 1.5px solid #d1e3f8;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .feature.done { background: #f0faf5; border-color: #b6e8ce; }
+    .feature.pending { background: #fff; border-color: #d1e3f8; }
+    .feature.soon { background: #fffbf0; border-color: #fde68a; }
+    .feature.future { background: #f8f5ff; border-color: #ddd0f8; }
+
+    .feature-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .feature-body { flex: 1; }
+    .feature-body h3 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+    .feature-body p { font-size: 12px; color: #5b7a99; line-height: 1.5; }
+
+    .badge-status {
+      flex-shrink: 0;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .badge-status.done { background: #2ac769; color: white; }
+    .badge-status.pending { background: #1c6fbe; color: white; }
+    .badge-status.soon { background: #d97706; color: white; }
+    .badge-status.future { background: #7c3aed; color: white; }
+
+    /* ── Bot menu visual ── */
+    .bot-menu {
+      border: 1.5px solid #d1e3f8;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .bot-menu-header {
+      background: #1a2e44;
+      color: white;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bot-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 1px solid #eef2f7;
+      font-size: 13px;
+    }
+    .bot-option:last-child { border-bottom: none; }
+    .opt-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #1c6fbe;
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px;
+      flex-shrink: 0;
+    }
+    .opt-num.green { background: #18a05c; }
+    .opt-num.orange { background: #d97706; }
+    .opt-num.purple { background: #7c3aed; }
+    .opt-num.gray { background: #5b7a99; }
+    .opt-text { flex: 1; }
+    .opt-text strong { display: block; font-size: 13px; }
+    .opt-text span { font-size: 11px; color: #5b7a99; }
+    .opt-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: #eef2f7;
+      color: #5b7a99;
+    }
+    .opt-pill.live { background: #dff5ea; color: #18a05c; }
+    .opt-pill.soon { background: #fff3d0; color: #d97706; }
+
+    /* ── Excepciones ── */
+    .exception {
+      display: flex;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1.5px solid #fde68a;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: #fffbf0;
+      font-size: 12px;
+      align-items: flex-start;
+    }
+    .exception-icon { font-size: 18px; flex-shrink: 0; }
+    .exception p { color: #78400a; line-height: 1.5; }
+    .exception strong { color: #4a2800; }
+
+    /* ── Stack ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .stack-item {
+      border: 1.5px solid #d1e3f8;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stack-item .tech-icon { font-size: 26px; margin-bottom: 6px; }
+    .stack-item h3 { font-size: 13px; font-weight: 700; }
+    .stack-item p { font-size: 11px; color: #5b7a99; margin-top: 2px; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 2px dashed #d1e3f8; margin: 22px 0; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 1.5px solid #d1e3f8;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #7a9ab5;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; margin: 0; padding: 10mm 12mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-icon">🤖</div>
+      <div>
+        <h1>Turni — Bot de WhatsApp</h1>
+        <div class="header-sub">Consultorio Torrado &amp; Berney · Olavarria · Hoja de ruta del proyecto</div>
+      </div>
+    </div>
+    <div class="header-tags">
+      <span class="tag">Node.js</span>
+      <span class="tag">Express</span>
+      <span class="tag">WhatsApp Cloud API</span>
+      <span class="tag">Railway</span>
+      <span class="tag">Meta for Developers</span>
+      <span class="tag">RCTA</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="status-grid">
+    <div class="stat-card">
+      <div class="stat-icon">💬</div>
+      <div class="stat-num">9</div>
+      <div class="stat-label">opciones del menu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⚡</div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">archivos de codigo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏥</div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">medicos / consultorios</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🚀</div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">disponible en Railway</div>
+    </div>
+  </div>
+
+  <!-- MENU ACTUAL -->
+  <div class="section-title verde">
+    <span style="font-size:20px">📱</span>
+    <h2>Menu actual del bot</h2>
+  </div>
+
+  <div class="bot-menu">
+    <div class="bot-menu-header">
+      <span>💬</span> Consultorio Torrado &amp; Berney — Bot de WhatsApp
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">1</div>
+      <div class="opt-text">
+        <strong>Horarios de atencion</strong>
+        <span>Olavarria y Bolivar — horarios estimativos de cada profesional</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">2</div>
+      <div class="opt-text">
+        <strong>Sacar un turno</strong>
+        <span>Links DocTurno para Dr. Torrado (Olavarria + Bolivar) y Dra. Berney</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">3</div>
+      <div class="opt-text">
+        <strong>Cancelar o reprogramar turno</strong>
+        <span>Links DocTurno o contacto directo con la secretaria</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">4</div>
+      <div class="opt-text">
+        <strong>Recetas digitales</strong>
+        <span>Submenu: 41 ya registrado · 42 primera vez · 6/43 problemas</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num gray">5</div>
+      <div class="opt-text">
+        <strong>Factura digital</strong>
+        <span>Avisa que no esta disponible aun — integracion AFIP pendiente</span>
+      </div>
+      <span class="opt-pill soon">pendiente</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">6</div>
+      <div class="opt-text">
+        <strong>Problemas con registro RCTA</strong>
+        <span>Solicita datos del paciente y dervia a la secretaria</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num">7</div>
+      <div class="opt-text">
+        <strong>Otra consulta — contacto y direccion</strong>
+        <span>Direccion, telefono fijo y WhatsApp del consultorio</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+    <div class="bot-option">
+      <div class="opt-num orange">0</div>
+      <div class="opt-text">
+        <strong>Hablar con la secretaria</strong>
+        <span>Corta el bot — la secretaria toma el chat. Escribir "menu" para volver.</span>
+      </div>
+      <span class="opt-pill live">✓ activo</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STACK TECNICO -->
+  <div class="section-title azul">
+    <span style="font-size:20px">🛠️</span>
+    <h2>Stack tecnico</h2>
+  </div>
+
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div class="tech-icon">🟢</div>
+      <h3>Node.js + Express</h3>
+      <p>Servidor web y webhook que recibe mensajes de Meta</p>
+    </div>
+    <div class="stack-item">
+      <div class="tech-icon">💬</div>
+      <h3>WhatsApp Cloud API</h3>
+      <p>Meta for Developers — envia y recibe mensajes via webhook</p>
+    </div>
+    <div class="stack-item">
+      <div class="tech-icon">🚂</div>
+      <h3>Railway</h3>
+      <p>Hosteo del servidor — deploy automatico desde GitHub</p>
+    </div>
+    <div class="stack-item">
+      <div class="tech-icon">📅</div>
+      <h3>DocTurno</h3>
+      <p>Sistema de turnos online donde los pacientes sacan su cita</p>
+    </div>
+    <div class="stack-item">
+      <div class="tech-icon">💊</div>
+      <h3>RCTA v1.19.1</h3>
+      <p>Sistema de recetas digitales online para los profesionales</p>
+    </div>
+    <div class="stack-item">
+      <div class="tech-icon">🐙</div>
+      <h3>GitHub</h3>
+      <p>Control de versiones — cada cambio queda registrado</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PENDIENTES PRIORITARIOS -->
+  <div class="section-title naranja">
+    <span style="font-size:20px">🔥</span>
+    <h2>Pendientes prioritarios</h2>
+  </div>
+
+  <div class="feature pending">
+    <div class="feature-icon">📱</div>
+    <div class="feature-body">
+      <h3>Migrar al numero real del consultorio</h3>
+      <p>Hoy el bot funciona en el numero de prueba de Meta. Para que los pacientes reales lo usen hay que migrar el numero +54 9 2284 59-4020. Requiere planificarlo con la secretaria — al migrar, pierde acceso a WhatsApp Web.</p>
+    </div>
+    <span class="badge-status pending">prioritario</span>
+  </div>
+
+  <div class="feature pending">
+    <div class="feature-icon">🔑</div>
+    <div class="feature-body">
+      <h3>Token permanente de Meta (System User Token)</h3>
+      <p>El token actual vence en pocas horas y hay que renovarlo manualmente. Un System User Token no vence. Se configura en Meta Business Suite → Usuarios del sistema.</p>
+    </div>
+    <span class="badge-status pending">prioritario</span>
+  </div>
+
+  <div class="feature soon">
+    <div class="feature-icon">🧾</div>
+    <div class="feature-body">
+      <h3>Factura digital — integracion AFIP SDK</h3>
+      <p>La opcion 5 hoy solo avisa que no esta disponible. Con AFIP SDK (docs.afipsdk.com) se podria generar y enviar la factura electronica directamente desde el bot.</p>
+    </div>
+    <span class="badge-status soon">proximo</span>
+  </div>
+
+  <div class="feature soon">
+    <div class="feature-icon">👶</div>
+    <div class="feature-body">
+      <h3>Opcion "Primera vez en el consultorio"</h3>
+      <p>Muchos pacientes nuevos no saben como sacar turno online. Una opcion 8 podria guiarlos paso a paso por DocTurno con capturas de pantalla.</p>
+    </div>
+    <span class="badge-status soon">proximo</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MEJORAS FUTURAS -->
+  <div class="section-title" style="color:#7c3aed;border-color:#7c3aed">
+    <span style="font-size:20px">🚀</span>
+    <h2>Mejoras futuras</h2>
+  </div>
+
+  <div class="feature future">
+    <div class="feature-icon">💾</div>
+    <div class="feature-body">
+      <h3>Persistencia del modo secretaria</h3>
+      <p>Hoy si Railway redeploya, los pacientes en modo secretaria vuelven al bot automaticamente. Con una base de datos PostgreSQL el estado se guarda de forma permanente.</p>
+    </div>
+    <span class="badge-status future">futuro</span>
+  </div>
+
+  <div class="feature future">
+    <div class="feature-icon">⏰</div>
+    <div class="feature-body">
+      <h3>Recordatorios automaticos de turno</h3>
+      <p>24 horas antes del turno, el bot envia un mensaje de recordatorio al paciente. Requiere integracion con la agenda de DocTurno o un calendario compartido.</p>
+    </div>
+    <span class="badge-status future">futuro</span>
+  </div>
+
+  <div class="feature future">
+    <div class="feature-icon">🧠</div>
+    <div class="feature-body">
+      <h3>Respuesta a lenguaje natural con IA</h3>
+      <p>Hoy el bot solo entiende numeros. Con Claude API o Ollama podria entender preguntas como "tienen turno esta semana para mi nena?" sin que el paciente tenga que elegir un numero.</p>
+    </div>
+    <span class="badge-status future">futuro</span>
+  </div>
+
+  <div class="feature future">
+    <div class="feature-icon">📊</div>
+    <div class="feature-body">
+      <h3>Dashboard de uso</h3>
+      <p>Base de datos PostgreSQL para ver cuantos pacientes usaron el bot por dia, que opciones eligieron y cuantos derivaron a la secretaria. Util para tomar decisiones.</p>
+    </div>
+    <span class="badge-status future">futuro</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- EXCEPCIONES NO CUBIERTAS -->
+  <div class="section-title gris">
+    <span style="font-size:20px">⚠️</span>
+    <h2>Casos no cubiertos todavia</h2>
+  </div>
+
+  <div class="exception">
+    <div class="exception-icon">🖼️</div>
+    <p><strong>Paciente manda foto, audio o sticker:</strong> el bot no responde nada. Esta bien por ahora pero podria avisar que solo entiende texto.</p>
+  </div>
+
+  <div class="exception">
+    <div class="exception-icon">💬</div>
+    <p><strong>Paciente escribe en lenguaje natural:</strong> "quiero turno" o "me pueden atender" no son entendidos — el bot devuelve el menu. Requiere IA para mejorar esto.</p>
+  </div>
+
+  <div class="exception">
+    <div class="exception-icon">🔄</div>
+    <p><strong>Redeploy de Railway:</strong> si el servidor se reinicia, los pacientes en modo secretaria (opcion 0) vuelven al bot automaticamente porque el estado vive en RAM.</p>
+  </div>
+
+  <div class="exception">
+    <div class="exception-icon">🌙</div>
+    <p><strong>Fuera del horario del consultorio:</strong> el bot responde igual a las 3am o los domingos. Se podria agregar un mensaje de "estamos cerrados, te respondemos el proximo dia habil".</p>
+  </div>
+
+  <div class="exception">
+    <div class="exception-icon">🔑</div>
+    <p><strong>Token de Meta vencido:</strong> el bot recibe los mensajes de los pacientes pero no puede responder. Hay que renovar el token en Meta y redeployar Railway. Se soluciona con token permanente.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Turni Bot · github.com/TorradoSantiago/turni · turni-production.up.railway.app</span>
+    <span>Marzo 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
