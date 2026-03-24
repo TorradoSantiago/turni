@@ -6,77 +6,148 @@ endobj
 << /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 7 0 R >> >> /Contents 5 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 5 0 R >>
 endobj
 4 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 7 0 R >> >> /Contents 6 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 6 0 R >>
 endobj
 5 0 obj
-<< /Length 1047 >>
+<< /Length 1745 >>
 stream
 BT
-/F1 12 Tf
-1 0 0 1 50 790 Tm (GUIA DE REGISTRO PARA RECETAS DIGITALES) Tj
-1 0 0 1 50 770 Tm () Tj
-1 0 0 1 50 750 Tm (PASO 1. REGISTRARSE EN RCTA) Tj
-1 0 0 1 50 730 Tm (   Dra. Paula Berney:) Tj
-1 0 0 1 50 710 Tm (   https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac) Tj
-1 0 0 1 50 690 Tm () Tj
-1 0 0 1 50 670 Tm (   Dr. Pablo Torrado:) Tj
-1 0 0 1 50 650 Tm (   https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0) Tj
-1 0 0 1 50 630 Tm () Tj
-1 0 0 1 50 610 Tm (PASO 2. TOCAR "INGRESAR MIS DATOS" Y COMPLETAR EL FORMULARIO) Tj
-1 0 0 1 50 590 Tm (   Completar nombre, apellido, telefono, fecha de nacimiento,) Tj
-1 0 0 1 50 570 Tm (   documento, sexo y cobertura medica. La foto y el email pueden) Tj
-1 0 0 1 50 550 Tm (   quedar vacios si el sistema los deja como opcionales.) Tj
-1 0 0 1 50 530 Tm () Tj
-1 0 0 1 50 510 Tm (PASO 3. ENVIAR Y ESPERAR LA CONFIRMACION) Tj
-1 0 0 1 50 490 Tm (   Cuando aparece el mensaje de datos cargados correctamente,) Tj
-1 0 0 1 50 470 Tm (   el alta ya quedo terminada.) Tj
+/F2 18 Tf
+1 0 0 1 50 800 Tm (Guia de recetas digitales  Consultorio Torrado & Berney) Tj
+/F1 10 Tf
+1 0 0 1 50 769 Tm (El consultorio usa RCTA para enviar recetas digitales.) Tj
+/F1 10 Tf
+1 0 0 1 50 754 Tm (El proceso tiene dos pasos: registrarse una vez, despues pedir la receta cada vez.) Tj
+/F2 13 Tf
+1 0 0 1 50 731 Tm (Paso 1  Registro \(solo la primera vez\)) Tj
+/F1 10 Tf
+1 0 0 1 50 705 Tm (Abra el link de su medico y toque Ingresar mis datos.) Tj
+/F1 10 Tf
+1 0 0 1 50 682 Tm (  Dra. Paula Berney:) Tj
+/F1 10 Tf
+1 0 0 1 50 667 Tm (  https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac) Tj
+/F1 10 Tf
+1 0 0 1 50 644 Tm (  Dr. Pablo Torrado:) Tj
+/F1 10 Tf
+1 0 0 1 50 629 Tm (  https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0) Tj
+/F1 10 Tf
+1 0 0 1 50 606 Tm (Complete el formulario: nombre, apellido, telefono, fecha de nacimiento,) Tj
+/F1 10 Tf
+1 0 0 1 50 591 Tm (tipo y numero de documento, y cobertura medica.) Tj
+/F1 10 Tf
+1 0 0 1 50 576 Tm (La foto y el email pueden quedar vacios si el sistema los marca opcionales.) Tj
+/F1 10 Tf
+1 0 0 1 50 553 Tm (Cuando aparece Datos cargados correctamente, el alta termino.) Tj
+/F2 13 Tf
+1 0 0 1 50 530 Tm (Paso 2  Pedir la receta \(cada vez que la necesite\)) Tj
+/F1 10 Tf
+1 0 0 1 50 504 Tm (Si ya esta registrado, use directamente el link de pedido de su medico:) Tj
+/F1 10 Tf
+1 0 0 1 50 481 Tm (  Dra. Paula Berney:) Tj
+/F1 10 Tf
+1 0 0 1 50 466 Tm (  https://app.rcta.me/p/paula-marcela-berney) Tj
+/F1 10 Tf
+1 0 0 1 50 443 Tm (  Dr. Pablo Torrado:) Tj
+/F1 10 Tf
+1 0 0 1 50 428 Tm (  https://app.rcta.me/p/pablo-augusto-torrado-16) Tj
+/F1 10 Tf
+1 0 0 1 50 405 Tm (Seleccione el medicamento o escriba el nombre de la gota y envie el pedido.) Tj
 ET
 endstream
 endobj
 6 0 obj
-<< /Length 969 >>
+<< /Length 2347 >>
 stream
 BT
-/F1 12 Tf
-1 0 0 1 50 790 Tm (PASO 4. PEDIR LA RECETA EN EL LINK DEL PROFESIONAL) Tj
-1 0 0 1 50 770 Tm () Tj
-1 0 0 1 50 750 Tm (   Dra. Paula Berney:) Tj
-1 0 0 1 50 730 Tm (   https://app.rcta.me/p/paula-marcela-berney) Tj
-1 0 0 1 50 710 Tm () Tj
-1 0 0 1 50 690 Tm (   Dr. Pablo Torrado:) Tj
-1 0 0 1 50 670 Tm (   https://app.rcta.me/p/pablo-augusto-torrado-16) Tj
-1 0 0 1 50 650 Tm () Tj
-1 0 0 1 50 630 Tm (PASO 5. VOLVER A WHATSAPP) Tj
-1 0 0 1 50 610 Tm (   Despues de registrarse y hacer el pedido, volver al chat y) Tj
-1 0 0 1 50 590 Tm (   escribir que gota o medicamento necesita.) Tj
-1 0 0 1 50 570 Tm () Tj
-1 0 0 1 50 550 Tm (MENSAJE SUGERIDO) Tj
-1 0 0 1 50 530 Tm (   "Ya me registre y ya hice el pedido de receta. Necesito...") Tj
-1 0 0 1 50 510 Tm () Tj
-1 0 0 1 50 490 Tm (SI HAY PROBLEMAS) Tj
-1 0 0 1 50 470 Tm (   Responder con la opcion 6 del bot y detallar:) Tj
-1 0 0 1 50 450 Tm (   nombre y apellido, medico, medicamento y paso donde se trabo.) Tj
+/F2 13 Tf
+1 0 0 1 50 800 Tm (Despues del pedido  volver a WhatsApp) Tj
+/F1 10 Tf
+1 0 0 1 50 774 Tm (Una vez completado el pedido en RCTA, vuelva al chat de WhatsApp) Tj
+/F1 10 Tf
+1 0 0 1 50 759 Tm (del consultorio y escriba que necesita.) Tj
+/F1 10 Tf
+1 0 0 1 50 736 Tm (Mensaje sugerido:) Tj
+/F1 10 Tf
+1 0 0 1 50 721 Tm (  Ya me registre y ya hice el pedido de receta.) Tj
+/F1 10 Tf
+1 0 0 1 50 706 Tm (  Necesito [nombre del medicamento o gota].) Tj
+/F2 13 Tf
+1 0 0 1 50 683 Tm (Como navegar el bot de WhatsApp) Tj
+/F1 10 Tf
+1 0 0 1 50 657 Tm (  1   Horarios de atencion) Tj
+/F1 10 Tf
+1 0 0 1 50 642 Tm (  2   Sacar un turno) Tj
+/F1 10 Tf
+1 0 0 1 50 627 Tm (  3   Cancelar o reprogramar turno) Tj
+/F1 10 Tf
+1 0 0 1 50 612 Tm (  4   Recetas digitales  <-- empiece aqui) Tj
+/F1 10 Tf
+1 0 0 1 50 597 Tm (        41  Ya estoy registrado en RCTA) Tj
+/F1 10 Tf
+1 0 0 1 50 582 Tm (        42  Todavia no estoy registrado) Tj
+/F1 10 Tf
+1 0 0 1 50 567 Tm (  5   Factura digital) Tj
+/F1 10 Tf
+1 0 0 1 50 552 Tm (  6   Problemas con el registro de recetas) Tj
+/F1 10 Tf
+1 0 0 1 50 537 Tm (  7   Contacto y direccion del consultorio) Tj
+/F1 10 Tf
+1 0 0 1 50 522 Tm (  0   Hablar con la secretaria \(disponible en cualquier respuesta del bot\)) Tj
+/F2 13 Tf
+1 0 0 1 50 499 Tm (Si tiene problemas con el registro) Tj
+/F1 10 Tf
+1 0 0 1 50 473 Tm (Responda 6 desde el menu principal.) Tj
+/F1 10 Tf
+1 0 0 1 50 458 Tm (Incluya en su mensaje:) Tj
+/F1 10 Tf
+1 0 0 1 50 443 Tm (  - Nombre y apellido completo) Tj
+/F1 10 Tf
+1 0 0 1 50 428 Tm (  - Medico que lo atiende \(Dra. Berney o Dr. Torrado\)) Tj
+/F1 10 Tf
+1 0 0 1 50 413 Tm (  - Medicamento o gota que necesita) Tj
+/F1 10 Tf
+1 0 0 1 50 398 Tm (  - En que paso del registro se trabo) Tj
+/F2 13 Tf
+1 0 0 1 50 375 Tm (Hablar con la secretaria) Tj
+/F1 10 Tf
+1 0 0 1 50 349 Tm (En cualquier respuesta del bot, responda 0 para pasar a atencion humana.) Tj
+/F1 10 Tf
+1 0 0 1 50 334 Tm (La secretaria le contestara por este mismo chat de WhatsApp.) Tj
+/F1 10 Tf
+1 0 0 1 50 319 Tm (Para volver al menu automatico en cualquier momento, escriba: menu) Tj
+/F1 10 Tf
+1 0 0 1 50 296 Tm (Consultorio Torrado & Berney) Tj
+/F1 10 Tf
+1 0 0 1 50 281 Tm (Vicente Lopez 2061, Olavarria, Buenos Aires) Tj
+/F1 10 Tf
+1 0 0 1 50 266 Tm (Tel fijo: \(02284\) 416078) Tj
+/F1 10 Tf
+1 0 0 1 50 251 Tm (WhatsApp: \(02284\) 594020) Tj
 ET
 endstream
 endobj
 7 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
 xref
-0 8
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
 0000000121 00000 n 
-0000000247 00000 n 
-0000000373 00000 n 
-0000001472 00000 n 
-0000002492 00000 n 
+0000000257 00000 n 
+0000000393 00000 n 
+0000002190 00000 n 
+0000004589 00000 n 
+0000004659 00000 n 
 trailer
-<< /Size 8 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-2562
+4734
 %%EOF

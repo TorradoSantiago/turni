@@ -1,0 +1,183 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 850] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 6 0 R >>
+endobj
+5 0 obj
+<< /Length 2219 >>
+stream
+BT
+/F2 18 Tf
+1 0 0 1 50 800 Tm (Roadmap y pendientes  Turni Bot) Tj
+/F2 13 Tf
+1 0 0 1 50 777 Tm (Consultorio Torrado & Berney  2026-03-24) Tj
+/F2 13 Tf
+1 0 0 1 50 751 Tm (Estado actual del bot) Tj
+/F1 10 Tf
+1 0 0 1 50 725 Tm (El bot funciona en el numero de prueba de Meta \(no en el numero real todavia\).) Tj
+/F1 10 Tf
+1 0 0 1 50 710 Tm (Recibe mensajes por webhook y responde con menu numerado, sin base de datos.) Tj
+/F1 10 Tf
+1 0 0 1 50 687 Tm (Opciones activas:) Tj
+/F1 10 Tf
+1 0 0 1 50 672 Tm (  1   Horarios de atencion \(Olavarria y Bolivar\)) Tj
+/F1 10 Tf
+1 0 0 1 50 657 Tm (  2   Sacar turno \(links DocTurno para Torrado y Berney\)) Tj
+/F1 10 Tf
+1 0 0 1 50 642 Tm (  3   Cancelar o reprogramar turno) Tj
+/F1 10 Tf
+1 0 0 1 50 627 Tm (  4   Recetas digitales \(submenu\)) Tj
+/F1 10 Tf
+1 0 0 1 50 612 Tm (  41  Ya registrado en RCTA -> link de pedido directo) Tj
+/F1 10 Tf
+1 0 0 1 50 597 Tm (  42  Primera vez -> links de registro + link de pedido) Tj
+/F1 10 Tf
+1 0 0 1 50 582 Tm (  5   Factura digital \(pendiente integracion AFIP\)) Tj
+/F1 10 Tf
+1 0 0 1 50 567 Tm (  6   Problemas con registro RCTA) Tj
+/F1 10 Tf
+1 0 0 1 50 552 Tm (  43  Alias de la opcion 6) Tj
+/F1 10 Tf
+1 0 0 1 50 537 Tm (  7   Contacto y direccion del consultorio) Tj
+/F1 10 Tf
+1 0 0 1 50 522 Tm (  0   Hablar con la secretaria \(corta el bot hasta que el paciente) Tj
+/F1 10 Tf
+1 0 0 1 50 507 Tm (      escriba "menu" o "volver"\)) Tj
+/F2 13 Tf
+1 0 0 1 50 484 Tm (Casos no cubiertos hoy) Tj
+/F1 10 Tf
+1 0 0 1 50 458 Tm (  - Paciente manda foto, audio o sticker: el bot no responde \(correcto\)) Tj
+/F1 10 Tf
+1 0 0 1 50 443 Tm (  - Paciente escribe en lenguaje natural: recibe el menu \(no entiende\)) Tj
+/F1 10 Tf
+1 0 0 1 50 428 Tm (  - Token de Meta vence: el bot recibe mensajes pero no puede responder) Tj
+/F1 10 Tf
+1 0 0 1 50 413 Tm (  - Redeploy de Railway: se pierde el estado del modo secretaria en RAM) Tj
+/F1 10 Tf
+1 0 0 1 50 398 Tm (  - Multiples mensajes rapidos seguidos: el bot responde a cada uno) Tj
+/F1 10 Tf
+1 0 0 1 50 383 Tm (  - Opcion 0 solo disponible desde sub-respuestas, no desde el menu inicial) Tj
+/F1 10 Tf
+1 0 0 1 50 368 Tm (  - No hay horario de cierre: el bot responde los 7 dias, las 24 horas) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 3554 >>
+stream
+BT
+/F2 13 Tf
+1 0 0 1 50 800 Tm (Pendientes prioritarios) Tj
+/F1 10 Tf
+1 0 0 1 50 774 Tm (  1. Migrar al numero real del consultorio) Tj
+/F1 10 Tf
+1 0 0 1 50 759 Tm (     Requiere: planificar con la secretaria, elegir fecha de corte,) Tj
+/F1 10 Tf
+1 0 0 1 50 744 Tm (     avisar a pacientes que el numero pasara a ser atendido por el bot.) Tj
+/F1 10 Tf
+1 0 0 1 50 721 Tm (  2. Token de produccion permanente \(System User Token de Meta\)) Tj
+/F1 10 Tf
+1 0 0 1 50 706 Tm (     El token temporal vence cada pocas horas.) Tj
+/F1 10 Tf
+1 0 0 1 50 691 Tm (     Un System User Token no vence y es mas seguro para produccion.) Tj
+/F1 10 Tf
+1 0 0 1 50 668 Tm (  3. Opcion para pacientes nuevos \(primera vez en el consultorio\)) Tj
+/F1 10 Tf
+1 0 0 1 50 653 Tm (     Muchos pacientes no saben como sacar turno online.) Tj
+/F1 10 Tf
+1 0 0 1 50 638 Tm (     Agregar opcion 8 con explicacion paso a paso de DocTurno.) Tj
+/F1 10 Tf
+1 0 0 1 50 615 Tm (  4. Factura digital \(opcion 5\)) Tj
+/F1 10 Tf
+1 0 0 1 50 600 Tm (     Hoy solo informa que no esta disponible.) Tj
+/F1 10 Tf
+1 0 0 1 50 585 Tm (     Integracion futura: AFIP SDK -> https://docs.afipsdk.com/) Tj
+/F2 13 Tf
+1 0 0 1 50 562 Tm (Mejoras propuestas) Tj
+/F1 10 Tf
+1 0 0 1 50 536 Tm (  A. Persistencia del modo secretaria) Tj
+/F1 10 Tf
+1 0 0 1 50 521 Tm (     Hoy el estado vive en RAM: si Railway redeploya, el modo) Tj
+/F1 10 Tf
+1 0 0 1 50 506 Tm (     secretaria se pierde y el paciente vuelve al bot automaticamente.) Tj
+/F1 10 Tf
+1 0 0 1 50 491 Tm (     Solucion: PostgreSQL en Railway para guardar el estado por numero.) Tj
+/F1 10 Tf
+1 0 0 1 50 468 Tm (  B. Recordatorios automaticos de turno) Tj
+/F1 10 Tf
+1 0 0 1 50 453 Tm (     24 horas antes del turno, el bot manda un mensaje de recordatorio.) Tj
+/F1 10 Tf
+1 0 0 1 50 438 Tm (     Requiere integracion con la agenda de DocTurno o con un calendario.) Tj
+/F1 10 Tf
+1 0 0 1 50 415 Tm (  C. Respuesta a lenguaje natural con IA) Tj
+/F1 10 Tf
+1 0 0 1 50 400 Tm (     Hoy el bot solo entiende numeros.) Tj
+/F1 10 Tf
+1 0 0 1 50 385 Tm (     Con Claude API o Ollama podria entender preguntas abiertas.) Tj
+/F1 10 Tf
+1 0 0 1 50 362 Tm (  D. Historial de interacciones) Tj
+/F1 10 Tf
+1 0 0 1 50 347 Tm (     PostgreSQL para saber cuantos pacientes usaron el bot,) Tj
+/F1 10 Tf
+1 0 0 1 50 332 Tm (     que opciones eligieron y cuantos derivaron a la secretaria.) Tj
+/F1 10 Tf
+1 0 0 1 50 309 Tm (  E. Horarios en tiempo real) Tj
+/F1 10 Tf
+1 0 0 1 50 294 Tm (     Los horarios son estaticos y estimativos.) Tj
+/F1 10 Tf
+1 0 0 1 50 279 Tm (     Si DocTurno tiene API publica, mostrar huecos disponibles reales.) Tj
+/F1 10 Tf
+1 0 0 1 50 256 Tm (  F. Opcion especifica para Bolivar) Tj
+/F1 10 Tf
+1 0 0 1 50 241 Tm (     Dr. Torrado atiende en Bolivar los miercoles.) Tj
+/F1 10 Tf
+1 0 0 1 50 226 Tm (     Se podria ofrecer un submenu con informacion del consultorio Bolivar.) Tj
+/F1 10 Tf
+1 0 0 1 50 203 Tm (  G. Horario de atencion del bot) Tj
+/F1 10 Tf
+1 0 0 1 50 188 Tm (     Fuera del horario del consultorio, responder automaticamente) Tj
+/F1 10 Tf
+1 0 0 1 50 173 Tm (     que el consultorio esta cerrado y retomara el proximo dia habil.) Tj
+/F2 13 Tf
+1 0 0 1 50 150 Tm (Contacto tecnico) Tj
+/F1 10 Tf
+1 0 0 1 50 124 Tm (  Repositorio:  https://github.com/TorradoSantiago/turni) Tj
+/F1 10 Tf
+1 0 0 1 50 109 Tm (  Despliegue:   https://turni-production.up.railway.app) Tj
+/F1 10 Tf
+1 0 0 1 50 94 Tm (  Meta app:     developers.facebook.com -> buscar app Turni) Tj
+/F1 10 Tf
+1 0 0 1 50 79 Tm (  Rama actual:  claude/epic-cerf \(pendiente de merge a main\)) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000393 00000 n 
+0000002664 00000 n 
+0000006270 00000 n 
+0000006340 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6415
+%%EOF
