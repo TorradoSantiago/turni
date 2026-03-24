@@ -9,7 +9,7 @@ Cuando una persona escribe al numero conectado al bot, recibe este menu:
 ```text
 1. Horarios de atencion
 2. Sacar un turno
-3. Cancelar un turno
+3. Cancelar o reprogramar turno
 4. Recetas digitales
 5. Factura digital
 6. Problemas con el registro de recetas

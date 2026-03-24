@@ -11,7 +11,7 @@ En que te puedo ayudar?
 
 1. Horarios de atencion
 2. Sacar un turno
-3. Cancelar un turno
+3. Cancelar o reprogramar turno
 4. Recetas digitales
 5. Factura digital
 6. Problemas con el registro de recetas
@@ -64,12 +64,22 @@ comunicarse directamente con el consultorio.
 Tel fijo: (02284) 416078
 WhatsApp: (02284) 594020`,
 
-  '3': `*Cancelar un turno*
+  '3': `*Cancelar o reprogramar turno*
 
-Para cancelar, escribi tu nombre y el turno que queres cancelar.
-Una persona del consultorio te va a responder a la brevedad.
+Si usted saco el turno online, puede cancelarlo o reprogramarlo desde el mismo link donde lo gestiono:
 
-Atencion: lunes a viernes en horario de consultorio.`,
+*Dr. Pablo Torrado - Olavarria*
+https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado?originType=medic-search&
+
+*Dr. Pablo Torrado - Bolivar*
+https://paciente.docturno.com/agenda/consultorio-medico-belgrano/torrado-pablo-a?originType=medic-page&
+
+*Dra. Paula Berney - Consulta general*
+https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&
+
+Si usted saco el turno via secretaria, cancelelo o reprogramelo directamente con ella por WhatsApp o llamando al fijo:
+WhatsApp: (02284) 594020
+Tel fijo: (02284) 416078`,
 
   '4': `*Recetas digitales*
 
