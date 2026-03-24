@@ -4,6 +4,8 @@ const whatsapp = require('../services/whatsapp');
 
 const RCTA_BERNEY_URL = 'https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac';
 const RCTA_TORRADO_URL = 'https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0';
+const RCTA_BERNEY_RECETA_URL = 'https://app.rcta.me/p/paula-marcela-berney';
+const RCTA_TORRADO_RECETA_URL = 'https://app.rcta.me/p/pablo-augusto-torrado-16';
 const GUIA_RECETAS_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia%20-%20Registro%20Recetas%20RCTA.pdf';
 
 const MENU = `Hola. Soy el asistente del consultorio Torrado & Berney.
@@ -83,7 +85,28 @@ Tel fijo: (02284) 416078`,
 
   '4': `*Recetas digitales*
 
-Si usted necesita una receta, primero debe registrarse en RCTA con el link de su profesional:
+Para continuar, responda:
+
+41. Ya estoy registrado en RCTA
+42. Todavia no estoy registrado en RCTA
+
+Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.`,
+
+  '41': `*Recetas digitales - Ya estoy registrado*
+
+Si usted ya esta registrado en RCTA, pida su receta desde el link de su profesional:
+
+*Dra. Paula Berney*
+${RCTA_BERNEY_RECETA_URL}
+
+*Dr. Pablo Torrado*
+${RCTA_TORRADO_RECETA_URL}
+
+Despues de hacer el pedido, escriba en este chat que medicamento o gota necesita para que podamos seguir el caso.`,
+
+  '42': `*Recetas digitales - Todavia no estoy registrado*
+
+Primero debe registrarse en RCTA con el link de su profesional:
 
 *Dra. Paula Berney*
 ${RCTA_BERNEY_URL}
@@ -91,10 +114,15 @@ ${RCTA_BERNEY_URL}
 *Dr. Pablo Torrado*
 ${RCTA_TORRADO_URL}
 
-Importante:
-inmediatamente despues de completar el registro, escriba en este chat que gota o medicamento necesita.
+Una vez registrado, use estos links para pedir la receta:
 
-Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.`,
+*Dra. Paula Berney*
+${RCTA_BERNEY_RECETA_URL}
+
+*Dr. Pablo Torrado*
+${RCTA_TORRADO_RECETA_URL}
+
+Despues del pedido, escriba en este chat que medicamento o gota necesita.`,
 
   '5': `*Factura digital*
 
@@ -102,6 +130,17 @@ Esta funcion estara disponible proximamente.
 Por ahora, solicite su factura llamando al (02284) 416078 o escribiendo su nombre completo y DNI y se la enviamos.`,
 
   '6': `*Problemas con el registro de recetas*
+
+Le dejamos una guia paso a paso para completar el alta en RCTA:
+${GUIA_RECETAS_URL}
+
+Si despues de eso sigue con problemas, escriba en este chat:
+- nombre y apellido
+- medico que lo atiende
+- que medicamento o gota necesita
+- en que paso del registro se trabo`,
+
+  '43': `*Problemas con el registro de recetas*
 
 Le dejamos una guia paso a paso para completar el alta en RCTA:
 ${GUIA_RECETAS_URL}

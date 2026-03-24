@@ -17,6 +17,11 @@ Cuando una persona escribe al numero conectado al bot, recibe este menu:
 ```
 
 El proyecto no usa base de datos ni IA. Todo el contenido esta hardcodeado para mantenerlo simple.
+La opcion 4 de recetas usa subopciones sin estado:
+
+- `41` ya registrado en RCTA
+- `42` todavia no registrado en RCTA
+- `6` o `43` problemas con el registro
 
 ## Estructura
 
