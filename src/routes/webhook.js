@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const whatsapp = require('../services/whatsapp');
 
+// Numeros que eligieron hablar con la secretaria — el bot no responde hasta que escriban "menu" o "volver"
+const esperandoSecretaria = new Set();
+
 const RCTA_BERNEY_URL = 'https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac';
 const RCTA_TORRADO_URL = 'https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0';
 const RCTA_BERNEY_RECETA_URL = 'https://app.rcta.me/p/paula-marcela-berney';
@@ -19,7 +22,19 @@ En que te puedo ayudar?
 6. Problemas con el registro de recetas
 7. Otra consulta`;
 
+const SECRETARIA_ESCAPE = `\n\nSi prefiere hablar con la secretaria, responda *0*`;
+
 const RESPUESTAS = {
+  '0': `*Hablar con la secretaria*
+
+Enseguida le atendemos. La secretaria le va a responder a la brevedad por este mismo chat.
+
+Si prefiere llamar directamente:
+Tel fijo: (02284) 416078
+WhatsApp: (02284) 594020
+
+Cuando quiera volver al menu automatico, escriba *menu*.`,
+
   '1': `*Horarios de atencion*
 
 Los horarios son estimativos. Para ver disponibilidad real, pedi turno online.
@@ -42,7 +57,7 @@ Olavarria - Vicente Lopez 2061
 - Martes: 09:00 a 14:40 hs
 - Miercoles: 11:20 a 15:40 hs
 - Jueves: 09:00 a 15:20 hs
-- Viernes: 09:00 a 14:40 hs`,
+- Viernes: 09:00 a 14:40 hs` + SECRETARIA_ESCAPE,
 
   '2': `*Sacar un turno*
 
@@ -64,7 +79,7 @@ https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-m
 Estudios o cirugia:
 comunicarse directamente con el consultorio.
 Tel fijo: (02284) 416078
-WhatsApp: (02284) 594020`,
+WhatsApp: (02284) 594020` + SECRETARIA_ESCAPE,
 
   '3': `*Cancelar o reprogramar turno*
 
@@ -81,7 +96,7 @@ https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-m
 
 Si usted saco el turno via secretaria, cancelelo o reprogramelo directamente con ella por WhatsApp o llamando al fijo:
 WhatsApp: (02284) 594020
-Tel fijo: (02284) 416078`,
+Tel fijo: (02284) 416078` + SECRETARIA_ESCAPE,
 
   '4': `*Recetas digitales*
 
@@ -90,7 +105,7 @@ Para continuar, responda:
 41. Ya estoy registrado en RCTA
 42. Todavia no estoy registrado en RCTA
 
-Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.`,
+Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.` + SECRETARIA_ESCAPE,
 
   '41': `*Recetas digitales - Ya estoy registrado*
 
@@ -102,7 +117,7 @@ ${RCTA_BERNEY_RECETA_URL}
 *Dr. Pablo Torrado*
 ${RCTA_TORRADO_RECETA_URL}
 
-Despues de hacer el pedido, escriba en este chat que medicamento o gota necesita para que podamos seguir el caso.`,
+Despues de hacer el pedido, escriba en este chat que medicamento o gota necesita para que podamos seguir el caso.` + SECRETARIA_ESCAPE,
 
   '42': `*Recetas digitales - Todavia no estoy registrado*
 
@@ -122,12 +137,12 @@ ${RCTA_BERNEY_RECETA_URL}
 *Dr. Pablo Torrado*
 ${RCTA_TORRADO_RECETA_URL}
 
-Despues del pedido, escriba en este chat que medicamento o gota necesita.`,
+Despues del pedido, escriba en este chat que medicamento o gota necesita.` + SECRETARIA_ESCAPE,
 
   '5': `*Factura digital*
 
 Esta funcion estara disponible proximamente.
-Por ahora, solicite su factura llamando al (02284) 416078 o escribiendo su nombre completo y DNI y se la enviamos.`,
+Por ahora, solicite su factura llamando al (02284) 416078 o escribiendo su nombre completo y DNI y se la enviamos.` + SECRETARIA_ESCAPE,
 
   '6': `*Problemas con el registro de recetas*
 
@@ -138,7 +153,7 @@ Si despues de eso sigue con problemas, escriba en este chat:
 - nombre y apellido
 - medico que lo atiende
 - que medicamento o gota necesita
-- en que paso del registro se trabo`,
+- en que paso del registro se trabo` + SECRETARIA_ESCAPE,
 
   '43': `*Problemas con el registro de recetas*
 
@@ -149,7 +164,7 @@ Si despues de eso sigue con problemas, escriba en este chat:
 - nombre y apellido
 - medico que lo atiende
 - que medicamento o gota necesita
-- en que paso del registro se trabo`,
+- en que paso del registro se trabo` + SECRETARIA_ESCAPE,
 
   '7': `*Contacto y direccion*
 
@@ -158,7 +173,7 @@ Vicente Lopez 2061, Olavarria, Buenos Aires
 Tel fijo: (02284) 416078
 WhatsApp: (02284) 594020
 
-Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.`,
+Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.` + SECRETARIA_ESCAPE,
 };
 
 function obtenerRespuesta(texto) {
@@ -193,14 +208,34 @@ router.post('/', async (req, res) => {
     const from = value?.contacts?.[0]?.wa_id || message.from;
 
     if (message.type !== 'text') {
-      await whatsapp.sendTextMessage(from, MENU);
+      if (!esperandoSecretaria.has(from)) {
+        await whatsapp.sendTextMessage(from, MENU);
+      }
       return;
     }
 
     const texto = message.text.body;
     console.log(`Mensaje de ${from}: "${texto}"`);
 
+    // Si el paciente eligio hablar con la secretaria, solo reaccionar a "menu" o "volver"
+    if (esperandoSecretaria.has(from)) {
+      const limpio = texto.trim().toLowerCase();
+      if (limpio === 'menu' || limpio === 'volver' || limpio === 'volver al menu') {
+        esperandoSecretaria.delete(from);
+        await whatsapp.sendTextMessage(from, MENU);
+        console.log(`${from} volvio al menu`);
+      }
+      return;
+    }
+
     const respuesta = obtenerRespuesta(texto);
+
+    // Si eligio opcion 0, activar modo secretaria
+    if (texto.trim() === '0') {
+      esperandoSecretaria.add(from);
+      console.log(`${from} eligio hablar con la secretaria`);
+    }
+
     await whatsapp.sendTextMessage(from, respuesta);
     console.log(`Respuesta enviada a ${from}`);
   } catch (err) {
