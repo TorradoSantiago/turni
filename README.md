@@ -33,14 +33,14 @@ La opción `0` activa el modo secretaria: el bot se silencia y la secretaria res
 
 ```
 src/
-  server.js          → levanta Express
-  routes/webhook.js  → verifica el webhook y procesa mensajes
-  services/whatsapp.js → envía respuestas a Meta Cloud API
+  server.js              → levanta Express
+  routes/webhook.js      → verifica el webhook y procesa mensajes
+  services/whatsapp.js   → envía respuestas a Meta Cloud API
 scripts/
-  html-to-pdf.js     → genera PDFs desde las guías HTML
-guia-registro-recetas-rcta.html  → guía visual para pacientes (RCTA)
-guia-consultorio.html            → guía para el consultorio y secretaria
-roadmap.html                     → estado del proyecto y pendientes
+  html-to-pdf.js         → regenera los PDFs (requiere npm install)
+Guia - Registro Recetas RCTA.pdf  → guía para pacientes con RCTA
+Turni - Guia del Consultorio.pdf  → guía para el consultorio y la secretaria
+Roadmap y Pendientes.pdf          → estado del proyecto
 ```
 
 ---
