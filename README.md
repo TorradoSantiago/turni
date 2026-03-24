@@ -10,8 +10,10 @@ Cuando una persona escribe al numero conectado al bot, recibe este menu:
 1. Horarios de atencion
 2. Sacar un turno
 3. Cancelar un turno
-4. Factura digital
-5. Otra consulta
+4. Recetas digitales
+5. Factura digital
+6. Problemas con el registro de recetas
+7. Otra consulta
 ```
 
 El proyecto no usa base de datos ni IA. Todo el contenido esta hardcodeado para mantenerlo simple.
@@ -25,6 +27,7 @@ src/
   services/whatsapp.js  -> envia respuestas a Meta Cloud API
   services/afip.js      -> stub futuro para facturacion
 test.js                 -> prueba local manual
+Guia - Registro Recetas RCTA.pdf  -> guia para pacientes con problemas en RCTA
 ```
 
 ## Requisitos
@@ -209,4 +212,3 @@ node test.js
 - Factura digital via AFIP
 - Persistencia de datos si el flujo crece
 - Mejoras de contenido y menu
-

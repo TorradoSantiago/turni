@@ -2,114 +2,136 @@ const express = require('express');
 const router = express.Router();
 const whatsapp = require('../services/whatsapp');
 
-// =============================================
-// CONTENIDO DEL BOT — editá solo esta sección
-// =============================================
+const RCTA_BERNEY_URL = 'https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac';
+const RCTA_TORRADO_URL = 'https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0';
+const GUIA_RECETAS_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia%20-%20Registro%20Recetas%20RCTA.pdf';
 
-const MENU = `¡Hola! 👋 Soy el asistente del consultorio Torrado & Berney.
-¿En qué te puedo ayudar?
+const MENU = `Hola. Soy el asistente del consultorio Torrado & Berney.
+En que te puedo ayudar?
 
-1️⃣ Horarios de atención
-2️⃣ Sacar un turno
-3️⃣ Cancelar un turno
-4️⃣ Factura digital
-5️⃣ Otra consulta`;
+1. Horarios de atencion
+2. Sacar un turno
+3. Cancelar un turno
+4. Recetas digitales
+5. Factura digital
+6. Problemas con el registro de recetas
+7. Otra consulta`;
 
 const RESPUESTAS = {
-  '1': `🕐 *Horarios de atención*
+  '1': `*Horarios de atencion*
 
-⚠️ Los horarios son estimativos. Para ver disponibilidad real, pedí turno online.
+Los horarios son estimativos. Para ver disponibilidad real, pedi turno online.
 
-👶 *Dr. Pablo Torrado — Oftalmología Infantil*
+*Dr. Pablo Torrado - Oftalmologia Infantil*
 
-📍 Olavarría — Vicente López 2061
-• Lunes: 12:00 a 17:30 hs
-• Martes: 10:30 a 17:30 hs
-• Jueves: 08:00 a 13:30 hs
-• Viernes: 08:00 a 14:00 hs
+Olavarria - Vicente Lopez 2061
+- Lunes: 12:00 a 17:30 hs
+- Martes: 10:30 a 17:30 hs
+- Jueves: 08:00 a 13:30 hs
+- Viernes: 08:00 a 14:00 hs
 
-📍 Bolívar — Laprida 156
-• Miércoles: 09:00 a 15:55 hs
+Bolivar - Laprida 156
+- Miercoles: 09:00 a 15:55 hs
 
-👁️ *Dra. Paula Berney — Oftalmología General*
+*Dra. Paula Berney - Oftalmologia General*
 
-📍 Olavarría — Vicente López 2061
-• Lunes: 12:00 a 16:20 hs
-• Martes: 09:00 a 14:40 hs
-• Miércoles: 11:20 a 15:40 hs
-• Jueves: 09:00 a 15:20 hs
-• Viernes: 09:00 a 14:40 hs`,
+Olavarria - Vicente Lopez 2061
+- Lunes: 12:00 a 16:20 hs
+- Martes: 09:00 a 14:40 hs
+- Miercoles: 11:20 a 15:40 hs
+- Jueves: 09:00 a 15:20 hs
+- Viernes: 09:00 a 14:40 hs`,
 
-  '2': `📅 *Sacar un turno*
+  '2': `*Sacar un turno*
 
-👶 *Dr. Pablo Torrado — Oftalmología Infantil*
+*Dr. Pablo Torrado - Oftalmologia Infantil*
 
-📍 Olavarría:
+Olavarria:
 https://paciente.docturno.com/agenda/pablo-augusto-torrado/pablo-augusto-torrado?originType=medic-search&
 
-📍 Bolívar:
+Bolivar:
 https://paciente.docturno.com/agenda/consultorio-medico-belgrano/torrado-pablo-a?originType=medic-page&
 
-——————————————
+------------------------------
 
-👁️ *Dra. Paula Berney — Oftalmología General*
+*Dra. Paula Berney - Oftalmologia General*
 
-🔹 Consulta general → pedí turno online:
+Consulta general:
 https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-marcela?originType=medic-page&
 
-🔹 Estudios o cirugía → comunicarse directamente con el consultorio:
-📞 Tel fijo: (02284) 416078
-📱 WhatsApp: (02284) 594020`,
+Estudios o cirugia:
+comunicarse directamente con el consultorio.
+Tel fijo: (02284) 416078
+WhatsApp: (02284) 594020`,
 
-  '3': `❌ *Cancelar un turno*
+  '3': `*Cancelar un turno*
 
-Para cancelar, escribí tu nombre y el turno que querés cancelar.
+Para cancelar, escribi tu nombre y el turno que queres cancelar.
 Una persona del consultorio te va a responder a la brevedad.
 
-⏰ Atención: Lunes a Viernes en horario de consultorio`,
+Atencion: lunes a viernes en horario de consultorio.`,
 
-  '4': `🧾 *Factura digital*
+  '4': `*Recetas digitales*
 
-Esta función estará disponible próximamente.
-Por ahora, solicitá tu factura llamando al (02284) 416078 o escribiendo tu nombre completo y DNI y te la enviamos.`,
+Si usted necesita una receta, primero debe registrarse en RCTA con el link de su profesional:
 
-  '5': `📍 *Contacto y dirección*
+*Dra. Paula Berney*
+${RCTA_BERNEY_URL}
 
-🏥 Consultorio Torrado & Berney
-📍 Vicente López 2061, Olavarría, Buenos Aires
-📞 Tel fijo: (02284) 416078
-📱 WhatsApp: (02284) 594020
+*Dr. Pablo Torrado*
+${RCTA_TORRADO_URL}
 
-Para cualquier otra consulta, escribí tu mensaje y te responderemos a la brevedad.`,
+Importante:
+inmediatamente despues de completar el registro, escriba en este chat que gota o medicamento necesita.
+
+Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.`,
+
+  '5': `*Factura digital*
+
+Esta funcion estara disponible proximamente.
+Por ahora, solicite su factura llamando al (02284) 416078 o escribiendo su nombre completo y DNI y se la enviamos.`,
+
+  '6': `*Problemas con el registro de recetas*
+
+Le dejamos una guia paso a paso para completar el alta en RCTA:
+${GUIA_RECETAS_URL}
+
+Si despues de eso sigue con problemas, escriba en este chat:
+- nombre y apellido
+- medico que lo atiende
+- que medicamento o gota necesita
+- en que paso del registro se trabo`,
+
+  '7': `*Contacto y direccion*
+
+Consultorio Torrado & Berney
+Vicente Lopez 2061, Olavarria, Buenos Aires
+Tel fijo: (02284) 416078
+WhatsApp: (02284) 594020
+
+Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.`,
 };
-
-// =============================================
-// LÓGICA — no necesitás tocar esto
-// =============================================
 
 function obtenerRespuesta(texto) {
   const limpio = texto.trim();
   return RESPUESTAS[limpio] || MENU;
 }
 
-// GET — Verificación del webhook (Meta lo llama una sola vez)
 router.get('/', (req, res) => {
   const mode = req.query['hub.mode'];
   const token = req.query['hub.verify_token'];
   const challenge = req.query['hub.challenge'];
 
   if (mode === 'subscribe' && token === process.env.WHATSAPP_VERIFY_TOKEN) {
-    console.log('✅ Webhook verificado correctamente');
+    console.log('Webhook verificado correctamente');
     return res.status(200).send(challenge);
   }
 
-  console.log('❌ Verificación fallida — token no coincide');
+  console.log('Verificacion fallida: token no coincide');
   return res.status(403).send('Forbidden');
 });
 
-// POST — Mensajes entrantes
 router.post('/', async (req, res) => {
-  // Responder 200 inmediatamente (Meta requiere respuesta rápida)
   res.sendStatus(200);
 
   try {
@@ -121,21 +143,19 @@ router.post('/', async (req, res) => {
     const message = messages[0];
     const from = value?.contacts?.[0]?.wa_id || message.from;
 
-    // Solo procesamos mensajes de texto
     if (message.type !== 'text') {
       await whatsapp.sendTextMessage(from, MENU);
       return;
     }
 
     const texto = message.text.body;
-    console.log(`📩 Mensaje de ${from}: "${texto}"`);
+    console.log(`Mensaje de ${from}: "${texto}"`);
 
     const respuesta = obtenerRespuesta(texto);
     await whatsapp.sendTextMessage(from, respuesta);
-    console.log(`✅ Respuesta enviada a ${from}`);
-
+    console.log(`Respuesta enviada a ${from}`);
   } catch (err) {
-    console.error('❌ Error procesando mensaje');
+    console.error('Error procesando mensaje');
     console.error('status:', err.response?.status);
     console.error('data:', JSON.stringify(err.response?.data, null, 2));
     console.error('message:', err.message);

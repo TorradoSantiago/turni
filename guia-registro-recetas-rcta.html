@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Guia - Registro Recetas RCTA</title>
+    <style>
+      :root {
+        --ink: #17324d;
+        --muted: #5b6b7a;
+        --line: #d8e1ea;
+        --accent: #1c78d6;
+        --accent-soft: #eef6ff;
+        --success: #1d9f5f;
+        --paper: #ffffff;
+        --bg: #f5f8fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 18mm 16mm;
+        background: var(--paper);
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      .hero {
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
+      }
+
+      .hero h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        font-size: 15px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      .links {
+        margin-top: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+      }
+
+      .links p {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .links strong {
+        color: var(--ink);
+      }
+
+      .links .url {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 13px;
+        color: var(--accent);
+        word-break: break-all;
+      }
+
+      .steps {
+        margin-top: 22px;
+      }
+
+      .step {
+        margin-bottom: 18px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .step-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent);
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .step h2 {
+        font-size: 21px;
+      }
+
+      .step p {
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+
+      .mock-screen {
+        margin-top: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .mock-screen .bar {
+        padding: 10px 14px;
+        background: #f3f6f9;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .mock-screen .content {
+        padding: 18px;
+      }
+
+      .screen-title {
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
+
+      .cta {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 12px 20px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .field {
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .success {
+        text-align: center;
+        padding: 24px 18px;
+      }
+
+      .check {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 18px;
+        border-radius: 999px;
+        background: #2ac769;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 52px;
+        font-weight: bold;
+      }
+
+      .tip {
+        margin-top: 20px;
+        padding: 14px 16px;
+        border-left: 4px solid var(--success);
+        background: #effaf3;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .footer {
+        margin-top: 20px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Guia de registro para recetas digitales</h1>
+        <p>
+          Esta guia explica como completar el alta en RCTA para pedir una receta.
+          Una vez terminado el registro, la persona debe volver al chat de WhatsApp
+          e indicar enseguida que gota o medicamento necesita.
+        </p>
+
+        <div class="links">
+          <p><strong>Links de registro</strong></p>
+          <p>Dra. Paula Berney</p>
+          <span class="url">https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac</span>
+          <p>Dr. Pablo Torrado</p>
+          <span class="url">https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0</span>
+        </div>
+      </section>
+
+      <section class="steps">
+        <article class="step">
+          <div class="step-header">
+            <span class="badge">1</span>
+            <h2>Abrir el link y tocar "Ingresar mis datos"</h2>
+          </div>
+          <p>
+            El paciente va a ver una pantalla de bienvenida donde el profesional
+            solicita sus datos para poder enviar recetas de manera mas agil.
+          </p>
+
+          <div class="mock-screen">
+            <div class="bar">Pantalla de bienvenida</div>
+            <div class="content">
+              <div class="screen-title">Su doctor necesita sus datos</div>
+              <p>Complete sus datos para poder recibir recetas digitales.</p>
+              <span class="cta">Ingresar mis datos</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-header">
+            <span class="badge">2</span>
+            <h2>Completar el formulario</h2>
+          </div>
+          <p>
+            Pedirle al paciente que complete los datos principales y toque
+            "Enviar". La foto de perfil y el email pueden quedar vacios si el
+            formulario los marca como opcionales.
+          </p>
+
+          <div class="mock-screen">
+            <div class="bar">Formulario RCTA</div>
+            <div class="content">
+              <div class="screen-title">Datos del paciente</div>
+              <div class="fields">
+                <div class="field">Nombre completo</div>
+                <div class="field">Apellido(s)</div>
+                <div class="field">Telefono movil</div>
+                <div class="field">Fecha de nacimiento</div>
+                <div class="field">Tipo de identificacion</div>
+                <div class="field">Numero de documento</div>
+                <div class="field full">Cobertura medica</div>
+                <div class="field full">Observaciones</div>
+              </div>
+              <span class="cta">Enviar</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-header">
+            <span class="badge">3</span>
+            <h2>Confirmacion y vuelta al chat</h2>
+          </div>
+          <p>
+            Cuando vea la confirmacion, el registro ya termino. En ese momento
+            tiene que volver a WhatsApp y escribir inmediatamente que gota o
+            medicamento necesita.
+          </p>
+
+          <div class="mock-screen">
+            <div class="bar">Confirmacion</div>
+            <div class="content success">
+              <div class="check">✓</div>
+              <div class="screen-title">Datos cargados correctamente</div>
+              <p>El registro se completo con exito.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="tip">
+        Mensaje sugerido para el paciente despues del registro:
+        "Ya me registre. Necesito la gota o medicamento..."
+      </div>
+
+      <div class="footer">
+        Guia preparada para compartir con pacientes que tengan dudas al registrarse en RCTA.
+      </div>
+    </main>
+  </body>
+</html>

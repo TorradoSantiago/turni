@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 7 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 7 0 R >> >> /Contents 6 0 R >>
+endobj
+5 0 obj
+<< /Length 1227 >>
+stream
+BT
+/F1 12 Tf
+1 0 0 1 50 790 Tm (GUIA DE REGISTRO PARA RECETAS DIGITALES) Tj
+1 0 0 1 50 770 Tm () Tj
+1 0 0 1 50 750 Tm (1. ABRIR EL LINK DEL PROFESIONAL) Tj
+1 0 0 1 50 730 Tm (   Dra. Paula Berney:) Tj
+1 0 0 1 50 710 Tm (   https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac) Tj
+1 0 0 1 50 690 Tm () Tj
+1 0 0 1 50 670 Tm (   Dr. Pablo Torrado:) Tj
+1 0 0 1 50 650 Tm (   https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0) Tj
+1 0 0 1 50 630 Tm () Tj
+1 0 0 1 50 610 Tm (2. TOCAR EL BOTON "INGRESAR MIS DATOS") Tj
+1 0 0 1 50 590 Tm (   En la primera pantalla aparece el mensaje del profesional) Tj
+1 0 0 1 50 570 Tm (   y un boton azul para empezar el registro.) Tj
+1 0 0 1 50 550 Tm () Tj
+1 0 0 1 50 530 Tm (3. COMPLETAR EL FORMULARIO) Tj
+1 0 0 1 50 510 Tm (   Cargar nombre, apellido, telefono, fecha de nacimiento,) Tj
+1 0 0 1 50 490 Tm (   tipo y numero de documento, sexo y cobertura medica.) Tj
+1 0 0 1 50 470 Tm (   La foto y el email pueden quedar vacios si son opcionales.) Tj
+1 0 0 1 50 450 Tm () Tj
+1 0 0 1 50 430 Tm (4. TOCAR "ENVIAR") Tj
+1 0 0 1 50 410 Tm (   Cuando termina, aparece la confirmacion de que los datos) Tj
+1 0 0 1 50 390 Tm (   fueron cargados correctamente.) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 1124 >>
+stream
+BT
+/F1 12 Tf
+1 0 0 1 50 790 Tm (5. VOLVER INMEDIATAMENTE A WHATSAPP) Tj
+1 0 0 1 50 770 Tm (   Despues del registro, escribir enseguida en el chat:) Tj
+1 0 0 1 50 750 Tm (   "Ya me registre. Necesito la gota o medicamento...") Tj
+1 0 0 1 50 730 Tm () Tj
+1 0 0 1 50 710 Tm (6. SI HAY PROBLEMAS CON EL REGISTRO) Tj
+1 0 0 1 50 690 Tm (   En el bot, responder con la opcion 6.) Tj
+1 0 0 1 50 670 Tm (   Si el problema sigue, enviar por WhatsApp:) Tj
+1 0 0 1 50 650 Tm (   - nombre y apellido) Tj
+1 0 0 1 50 630 Tm (   - medico que lo atiende) Tj
+1 0 0 1 50 610 Tm (   - medicamento o gota que necesita) Tj
+1 0 0 1 50 590 Tm (   - paso exacto donde se trabo) Tj
+1 0 0 1 50 570 Tm () Tj
+1 0 0 1 50 550 Tm (NOTA PARA ARGENTINA) Tj
+1 0 0 1 50 530 Tm (   Si Meta rechaza el numero por lista de autorizados,) Tj
+1 0 0 1 50 510 Tm (   puede ayudar registrarlo sin el 9 movil.) Tj
+1 0 0 1 50 490 Tm (   Ejemplo: usar +54 2284 51 1188 en vez de +54 9 2284 51 1188.) Tj
+1 0 0 1 50 470 Tm () Tj
+1 0 0 1 50 450 Tm (Esta guia fue preparada para compartir con pacientes) Tj
+1 0 0 1 50 430 Tm (que necesiten ayuda al registrarse en RCTA.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000000373 00000 n 
+0000001652 00000 n 
+0000002828 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+2898
+%%EOF
