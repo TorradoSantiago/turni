@@ -1,583 +1,437 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <title>Guia - Registro Recetas RCTA</title>
-    <style>
-      :root {
-        --ink: #17324d;
-        --muted: #5b6b7a;
-        --line: #d8e1ea;
-        --accent: #1c78d6;
-        --accent-soft: #eef6ff;
-        --success: #1d9f5f;
-        --warn: #e67e22;
-        --warn-soft: #fef9f0;
-        --paper: #ffffff;
-        --bg: #f5f8fb;
-      }
+<head>
+  <meta charset="utf-8">
+  <title>Como pedir su receta digital — Consultorio Torrado & Berney</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-      * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a2e44;
+    }
 
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: var(--ink);
-        background: var(--bg);
-      }
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      background: white;
+      padding: 14mm 16mm 12mm;
+    }
 
-      .page {
-        width: 210mm;
-        min-height: 297mm;
-        margin: 0 auto;
-        padding: 18mm 16mm;
-        background: var(--paper);
-      }
+    /* ── Encabezado ── */
+    .header {
+      background: #1c6fbe;
+      color: white;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-icon { font-size: 44px; line-height: 1; }
+    .header h1 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 4px; }
+    .header p { font-size: 13px; opacity: .85; }
 
-      h1, h2, h3, p { margin: 0; }
+    /* ── Selector de camino ── */
+    .paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .path-card {
+      border: 2px solid #d1e3f8;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .path-card .icon { font-size: 32px; margin-bottom: 6px; }
+    .path-card h2 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .path-card p { font-size: 12px; color: #5b7a99; }
+    .path-card.primera { border-color: #1c6fbe; background: #f0f7ff; }
+    .path-card.ya { border-color: #18a05c; background: #f0faf5; }
 
-      /* ── Hero ── */
-      .hero {
-        padding: 18px 20px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
-      }
-      .hero h1 { font-size: 26px; margin-bottom: 10px; }
-      .hero p { font-size: 14px; line-height: 1.5; color: var(--muted); }
+    /* ── Titulo de seccion ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid currentColor;
+    }
+    .section-header.azul { color: #1c6fbe; border-color: #1c6fbe; }
+    .section-header.verde { color: #18a05c; border-color: #18a05c; }
+    .section-header h2 { font-size: 17px; font-weight: 800; }
 
-      /* ── Links box ── */
-      .links-box {
-        margin-top: 14px;
-        padding: 14px 16px;
-        border-radius: 14px;
-        background: #fff;
-        border: 1px solid var(--line);
-      }
-      .links-box .section-label {
-        font-size: 12px;
-        font-weight: bold;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        margin-bottom: 8px;
-      }
-      .doctor-block { margin-bottom: 14px; }
-      .doctor-block:last-child { margin-bottom: 0; }
-      .doctor-name { font-size: 14px; font-weight: bold; color: var(--ink); margin-bottom: 2px; }
-      .url {
-        display: block;
-        font-size: 12px;
-        color: var(--accent);
-        word-break: break-all;
-        margin-bottom: 2px;
-      }
-      .url-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    /* ── Paso ── */
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: white;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-num.azul { background: #1c6fbe; }
+    .step-num.verde { background: #18a05c; }
+    .step-num.ok { background: #2ac769; }
 
-      /* ── Section divider ── */
-      .section-title {
-        margin: 24px 0 12px;
-        font-size: 18px;
-        font-weight: bold;
-        color: var(--ink);
-        border-bottom: 2px solid var(--line);
-        padding-bottom: 6px;
-      }
+    .step-body { flex: 1; }
+    .step-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; line-height: 1.3; }
+    .step-body p { font-size: 13px; color: #3d5a73; line-height: 1.6; }
 
-      /* ── Steps ── */
-      .step {
-        margin-bottom: 16px;
-        padding: 16px 18px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-      }
-      .step-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-      }
-      .badge {
-        width: 32px; height: 32px;
-        border-radius: 999px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent);
-        color: #fff;
-        font-weight: bold;
-        font-size: 14px;
-        flex-shrink: 0;
-      }
-      .badge.green { background: var(--success); }
-      .badge.orange { background: var(--warn); }
-      .step h2 { font-size: 17px; }
-      .step p { color: var(--muted); line-height: 1.55; font-size: 13px; margin-top: 4px; }
+    /* ── Boton simulado ── */
+    .btn-sim {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      color: white;
+    }
+    .btn-sim.azul { background: #1c6fbe; }
+    .btn-sim.celeste { background: #17a2b8; }
 
-      /* ── Mock screen ── */
-      .mock-screen {
-        margin-top: 12px;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        overflow: hidden;
-        background: #fff;
-      }
-      .mock-screen .bar {
-        padding: 8px 12px;
-        background: #f3f6f9;
-        border-bottom: 1px solid var(--line);
-        font-size: 12px;
-        color: var(--muted);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .mock-screen .bar .dot {
-        width: 8px; height: 8px;
-        border-radius: 50%;
-        background: #ccc;
-        display: inline-block;
-      }
-      .mock-screen .bar .dot.blue { background: var(--accent); }
-      .mock-screen .content { padding: 16px; }
-      .screen-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
-      .cta {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 10px 18px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #fff;
-        font-weight: bold;
-        font-size: 13px;
-      }
-      .cta.green { background: var(--success); }
+    /* ── Campos del formulario ── */
+    .fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .fld {
+      background: #f5f8fb;
+      border: 1px solid #cddcec;
+      border-radius: 7px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #3d5a73;
+    }
+    .fld.opt { border-style: dashed; color: #7a9ab5; }
+    .fld.full { grid-column: 1/-1; }
 
-      /* ── Form fields ── */
-      .fields {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 10px;
-      }
-      .field {
-        padding: 8px 10px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .field.optional { border-style: dashed; }
-      .field.full { grid-column: 1 / -1; }
-      .field-hint { font-size: 10px; color: #aaa; margin-top: 2px; }
+    /* ── Pantalla mock ── */
+    .screen {
+      border: 1.5px solid #d1e3f8;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+      background: white;
+    }
+    .screen-bar {
+      background: #e8f0fa;
+      padding: 7px 12px;
+      font-size: 11px;
+      color: #5b7a99;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .screen-bar .dot { width: 7px; height: 7px; border-radius: 50%; background: #1c6fbe; }
+    .screen-inner { padding: 14px 16px; }
 
-      /* ── Success screen ── */
-      .success { text-align: center; padding: 20px 16px; }
-      .check {
-        width: 72px; height: 72px;
-        margin: 0 auto 14px;
-        border-radius: 999px;
-        background: #2ac769;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-        font-weight: bold;
-      }
+    /* ── Confirmacion ── */
+    .confirm-box {
+      text-align: center;
+      padding: 20px;
+      background: #f0faf5;
+      border: 2px solid #2ac769;
+      border-radius: 14px;
+      margin-top: 10px;
+    }
+    .confirm-check { font-size: 48px; line-height: 1; margin-bottom: 8px; }
+    .confirm-box h3 { font-size: 18px; font-weight: 800; color: #18a05c; margin-bottom: 4px; }
+    .confirm-box p { font-size: 13px; color: #3d7a5a; }
 
-      /* ── Tip & warn ── */
-      .tip {
-        margin-top: 16px;
-        padding: 12px 14px;
-        border-left: 4px solid var(--success);
-        background: #effaf3;
-        font-size: 13px;
-        line-height: 1.55;
-        border-radius: 0 8px 8px 0;
-      }
-      .warn-box {
-        margin-top: 16px;
-        padding: 12px 14px;
-        border-left: 4px solid var(--warn);
-        background: var(--warn-soft);
-        font-size: 13px;
-        line-height: 1.55;
-        border-radius: 0 8px 8px 0;
-      }
-      .info-box {
-        margin-top: 16px;
-        padding: 12px 14px;
-        border-left: 4px solid var(--accent);
-        background: var(--accent-soft);
-        font-size: 13px;
-        line-height: 1.55;
-        border-radius: 0 8px 8px 0;
-      }
+    /* ── Tip / aviso ── */
+    .tip {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-left: 5px solid #2ac769;
+      background: #f0faf5;
+      border-radius: 0 10px 10px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #1a3a2a;
+    }
+    .tip strong { display: block; margin-bottom: 2px; }
 
-      /* ── Bot menu ── */
-      .bot-menu {
-        margin-top: 14px;
-        padding: 14px 16px;
-        border-radius: 14px;
-        background: #f3f6f9;
-        border: 1px solid var(--line);
-        font-size: 13px;
-      }
-      .bot-menu .menu-title { font-weight: bold; margin-bottom: 8px; }
-      .bot-menu .option { padding: 4px 0; color: var(--muted); }
-      .bot-menu .option strong { color: var(--ink); }
-      .bot-menu .option.highlight { color: var(--accent); }
-      .bot-menu .option.secretary { color: var(--warn); }
+    .warn {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-left: 5px solid #f0a500;
+      background: #fffbf0;
+      border-radius: 0 10px 10px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #4a3200;
+    }
 
-      /* ── Footer ── */
-      .footer {
-        margin-top: 24px;
-        padding-top: 12px;
-        border-top: 1px solid var(--line);
-        font-size: 11px;
-        color: var(--muted);
-        display: flex;
-        justify-content: space-between;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
+    /* ── Links ── */
+    .link-block {
+      background: #f5f8fb;
+      border: 1px solid #cddcec;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .link-block .doctor { font-weight: 700; color: #1a2e44; margin-bottom: 2px; font-size: 13px; }
+    .link-block .url { color: #1c6fbe; word-break: break-all; font-size: 11px; }
 
-      <!-- Hero -->
-      <section class="hero">
-        <h1>Guia de recetas digitales — Consultorio Torrado &amp; Berney</h1>
-        <p>
-          El consultorio usa <strong>RCTA</strong> para enviar recetas de forma digital. El proceso
-          tiene dos pasos: primero registrarse una sola vez, despues pedir la receta cada vez que la
-          necesite. Si ya esta registrado, va directo al paso de pedido.
-        </p>
+    /* ── Divisor ── */
+    .divider { border: none; border-top: 2px dashed #d1e3f8; margin: 26px 0; }
 
-        <div class="links-box">
-          <div class="section-label">Paso 1 — Registro (solo la primera vez)</div>
-          <div class="doctor-block">
-            <div class="doctor-name">Dra. Paula Berney</div>
-            <span class="url">https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac</span>
-          </div>
-          <div class="doctor-block">
-            <div class="doctor-name">Dr. Pablo Torrado</div>
-            <span class="url">https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0</span>
-          </div>
+    /* ── Footer ── */
+    .footer {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1.5px solid #d1e3f8;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #7a9ab5;
+    }
 
-          <div class="section-label" style="margin-top:12px">Paso 2 — Pedir la receta (cada vez)</div>
-          <div class="doctor-block">
-            <div class="doctor-name">Dra. Paula Berney</div>
-            <span class="url">https://app.rcta.me/p/paula-marcela-berney</span>
-          </div>
-          <div class="doctor-block">
-            <div class="doctor-name">Dr. Pablo Torrado</div>
-            <span class="url">https://app.rcta.me/p/pablo-augusto-torrado-16</span>
-          </div>
+    .section { margin-bottom: 26px; }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; margin: 0; padding: 10mm 12mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ENCABEZADO -->
+  <div class="header">
+    <div class="header-icon">💊</div>
+    <div>
+      <h1>Como pedir su receta digital</h1>
+      <p>Consultorio Torrado &amp; Berney · Vicente Lopez 2061, Olavarria · Tel (02284) 416078</p>
+    </div>
+  </div>
+
+  <!-- ¿PRIMERA VEZ O YA REGISTRADO? -->
+  <div class="paths">
+    <div class="path-card primera">
+      <div class="icon">🆕</div>
+      <h2>Primera vez</h2>
+      <p>Nunca me registre en RCTA</p>
+      <p style="margin-top:8px;font-size:12px;color:#1c6fbe;font-weight:700">Seguir desde el PASO 1</p>
+    </div>
+    <div class="path-card ya">
+      <div class="icon">✅</div>
+      <h2>Ya estoy registrado</h2>
+      <p>Ya complete mis datos antes</p>
+      <p style="margin-top:8px;font-size:12px;color:#18a05c;font-weight:700">Ir directamente al PASO 4</p>
+    </div>
+  </div>
+
+  <!-- ══ PARTE A: REGISTRO ══ -->
+  <div class="section">
+    <div class="section-header azul">
+      <span style="font-size:22px">📋</span>
+      <h2>Registro — solo la primera vez</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-num azul">1</div>
+      <div class="step-body">
+        <h3>Abrir el link de su medico</h3>
+        <p>El bot de WhatsApp se lo manda automaticamente. Tambien puede copiarlo de aca:</p>
+        <div class="link-block">
+          <div class="doctor">Dra. Paula Berney</div>
+          <div class="url">https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac</div>
         </div>
-      </section>
-
-      <!-- Menu del bot -->
-      <div class="section-title">Como llegar desde el bot de WhatsApp</div>
-      <div class="bot-menu">
-        <div class="menu-title">Escriba el numero que corresponda:</div>
-        <div class="option"><strong>1</strong> — Horarios de atencion</div>
-        <div class="option"><strong>2</strong> — Sacar un turno</div>
-        <div class="option"><strong>3</strong> — Cancelar o reprogramar turno</div>
-        <div class="option highlight"><strong>4</strong> — Recetas digitales ← empiece aqui</div>
-        <div class="option"><strong>5</strong> — Factura digital</div>
-        <div class="option"><strong>6</strong> — Problemas con el registro de recetas</div>
-        <div class="option"><strong>7</strong> — Otra consulta</div>
-        <div class="option secretary"><strong>0</strong> — Hablar con la secretaria (disponible desde cualquier respuesta del bot)</div>
-      </div>
-      <div class="info-box">
-        Al tocar <strong>4</strong>, el bot pregunta si ya esta registrado en RCTA.<br>
-        Responda <strong>41</strong> si ya se registro antes, o <strong>42</strong> si es la primera vez.
-      </div>
-
-      <!-- Seccion A: primera vez -->
-      <div class="section-title">Opcion 42 — Primera vez en RCTA</div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge">1</span>
-          <h2>Abrir el link — pantalla "Su Doctor Necesita Sus Datos"</h2>
+        <div class="link-block" style="margin-top:6px">
+          <div class="doctor">Dr. Pablo Torrado</div>
+          <div class="url">https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0</div>
         </div>
-        <p>
-          Al abrir el link de registro aparece la foto del profesional con este texto:<br>
-          <em>"[Profesional] solicita que complete sus datos para poder empezar a enviarle
-          sus recetas medicas de manera mas agil y personalizada."</em><br>
-          Tocar el boton azul para continuar.
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me — RCTA v1.19.1</div>
-          <div class="content" style="text-align:center;padding:20px 16px">
-            <div style="width:72px;height:72px;border-radius:50%;background:#c8e6f7;margin:0 auto 12px"></div>
-            <div class="screen-title">Su Doctor Necesita Sus Datos</div>
-            <p style="font-size:12px;color:#5b6b7a;max-width:340px;margin:8px auto 16px">
-              Dr/a. [Nombre del profesional] solicita que complete sus datos para poder
-              empezar a enviarle sus recetas medicas de manera mas agil y personalizada.
-            </p>
-            <span class="cta">Ingresar mis datos</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num azul">2</div>
+      <div class="step-body">
+        <h3>Tocar el boton azul "Ingresar mis datos"</h3>
+        <p>Aparece la foto del profesional con este mensaje:</p>
+        <div class="screen">
+          <div class="screen-bar"><span class="dot"></span> app.rcta.me</div>
+          <div class="screen-inner" style="text-align:center;padding:18px">
+            <div style="font-size:16px;font-weight:800;margin-bottom:8px">Su Doctor Necesita Sus Datos</div>
+            <p style="font-size:12px;color:#5b7a99;margin-bottom:16px">[Profesional] solicita que complete sus datos para poder empezar a enviarle sus recetas medicas de manera mas agil y personalizada.</p>
+            <span class="btn-sim azul">Ingresar mis datos</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="step">
-        <div class="step-header">
-          <span class="badge">2</span>
-          <h2>Completar el formulario "Datos del paciente"</h2>
-        </div>
-        <p>
-          Completar todos los campos con asterisco (*). La foto de perfil y el e-mail
-          son opcionales. Al final tildar la casilla de terminos y tocar <strong>Enviar</strong>.
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> Datos del paciente — RCTA v1.19.1</div>
-          <div class="content">
-            <div class="screen-title">Datos del paciente</div>
-            <p style="font-size:11px;color:#5b6b7a;margin-bottom:12px">
-              Complete sus datos para sumarse a la cartilla de pacientes del Dr/a. [Profesional]
-            </p>
-            <div style="font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;color:#5b6b7a;margin-bottom:12px">
-              Subir Imagen de Perfil — <em style="font-size:11px">opcional, se usa para reconocer al paciente mas rapidamente</em>
+    <div class="step">
+      <div class="step-num azul">3</div>
+      <div class="step-body">
+        <h3>Completar el formulario y tocar "Enviar"</h3>
+        <p>Llenar los campos marcados con <strong>*</strong>. La foto y el e-mail son opcionales.</p>
+        <div class="screen">
+          <div class="screen-bar"><span class="dot"></span> Datos del paciente — RCTA v1.19.1</div>
+          <div class="screen-inner">
+            <p style="font-size:11px;color:#5b7a99;margin-bottom:10px">Complete sus datos para sumarse a la cartilla de pacientes del Dr/a. [Profesional]</p>
+            <div class="fields-grid">
+              <div class="fld"><strong>Nombre *</strong></div>
+              <div class="fld"><strong>Apellido(s) *</strong></div>
+              <div class="fld opt">E-Mail (Opcional)</div>
+              <div class="fld"><strong>Telefono Movil</strong></div>
+              <div class="fld"><strong>Fecha de Nacimiento *</strong></div>
+              <div class="fld"><strong>N° de Documento *</strong> <span style="font-size:10px;color:#7a9ab5">(DNI)</span></div>
+              <div class="fld full"><strong>Sexo *</strong> &nbsp; ○ Masculino &nbsp; ○ Femenino &nbsp; ○ Otro</div>
+              <div class="fld full"><strong>Cobertura Medica *</strong> &nbsp;<span style="color:#7a9ab5">(desplegable)</span></div>
+              <div class="fld full opt">Observaciones</div>
             </div>
-            <div class="fields">
-              <div class="field">Nombre *</div>
-              <div class="field">Apellido(s) *</div>
-              <div class="field optional">E-Mail (Opcional)</div>
-              <div class="field">Telefono Movil</div>
-              <div class="field">Fecha de Nacimiento *</div>
-              <div class="field">Tipo de Identificacion<br><span class="field-hint">DNI (seleccion)</span></div>
-              <div class="field full">N° de Documento *</div>
-              <div class="field full">Sexo * &nbsp;○ Masculino &nbsp;○ Femenino &nbsp;○ Otro</div>
-              <div class="field full">Cobertura Medica * (desplegable — Seleccionar...)</div>
-              <div class="field full optional">Observaciones</div>
+            <div style="font-size:11px;color:#5b7a99;margin:10px 0 8px">☐ Acepto los Terminos y Condiciones y las Politicas de Privacidad.</div>
+            <span class="btn-sim azul">Enviar</span>
+          </div>
+        </div>
+
+        <div class="confirm-box" style="margin-top:12px">
+          <div class="confirm-check">✅</div>
+          <h3>Datos cargados correctamente</h3>
+          <p>[Nombre del paciente] tus datos fueron cargados correctamente.</p>
+        </div>
+        <div class="warn">
+          Este paso es <strong>una sola vez</strong>. La proxima vez que necesite una receta, ir directo al Paso 4.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ PARTE B: PEDIDO DE RECETA ══ -->
+  <div class="section">
+    <div class="section-header verde">
+      <span style="font-size:22px">📝</span>
+      <h2>Pedido de receta — cada vez que la necesite</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-num verde">4</div>
+      <div class="step-body">
+        <h3>Abrir el link de pedido de su medico</h3>
+        <div class="link-block">
+          <div class="doctor">Dra. Paula Berney</div>
+          <div class="url">https://app.rcta.me/p/paula-marcela-berney</div>
+        </div>
+        <div class="link-block" style="margin-top:6px">
+          <div class="doctor">Dr. Pablo Torrado</div>
+          <div class="url">https://app.rcta.me/p/pablo-augusto-torrado-16</div>
+        </div>
+        <p style="margin-top:8px">Se abre el <strong>Formulario de Solicitud de Recetas Online</strong>. Completar los datos personales (nombre, DNI, cobertura medica, etc.).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num verde">5</div>
+      <div class="step-body">
+        <h3>Tocar "Anadir medicamento" y buscarlo</h3>
+        <div class="screen">
+          <div class="screen-bar"><span class="dot"></span> Formulario de Solicitud de Recetas Online</div>
+          <div class="screen-inner">
+            <p style="font-size:12px;color:#3d5a73;font-weight:700;margin-bottom:10px">Ingrese los datos para la confeccion de la receta</p>
+            <p style="font-size:12px;color:#7a9ab5;text-align:center;margin-bottom:10px">Aun no posee medicamentos seleccionados para esta receta.</p>
+            <div style="text-align:center;margin-bottom:14px">
+              <span class="btn-sim celeste">Anadir medicamento</span>
             </div>
-            <div style="font-size:11px;color:#5b6b7a;margin:10px 0 8px">
-              ☐ Al registrarse usted acepta los <u>Terminos y Condiciones</u> y las <u>Politicas de Privacidad</u>.
+            <div style="border:1.5px solid #1c6fbe;border-radius:10px;padding:12px">
+              <div style="font-size:11px;color:#7a9ab5;margin-bottom:8px">🔍 Escribir el nombre... ej: "quidex", "tobradex", "timolol"</div>
+              <div style="font-size:12px;font-weight:700;color:#1a2e44;margin-bottom:4px">QUIDEX ciprofloxacina+dexametasona</div>
+              <div style="font-size:11px;color:#5b7a99;padding-left:8px;margin-bottom:2px">Seleccione presentacion...</div>
+              <div style="font-size:12px;color:#1c6fbe;padding-left:16px">→ gts.oft.x 5 ml</div>
+              <div style="font-size:12px;color:#1c6fbe;padding-left:16px">→ ung.oft.x 3.5 g</div>
             </div>
-            <span class="cta">Enviar</span>
+            <p style="font-size:12px;color:#3d5a73;margin-top:8px">Tocar la presentacion que le receto su medico.</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="step">
-        <div class="step-header">
-          <span class="badge green">3</span>
-          <h2>Confirmacion: "Datos cargados correctamente"</h2>
-        </div>
-        <p>
-          Cuando aparece esta pantalla, el alta en RCTA ya termino.
-          No hace falta repetir este paso — solo necesitara el link de pedido de receta de ahora en mas.
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> Confirmacion RCTA</div>
-          <div class="content success">
-            <div class="check">✓</div>
-            <div class="screen-title">Datos cargados correctamente</div>
-            <p style="font-size:13px;color:#5b6b7a">Su registro se completo con exito.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge">4</span>
-          <h2>Abrir el link de pedido y completar "Informacion Basica"</h2>
-        </div>
-        <p>
-          El formulario se llama <strong>Formulario de Solicitud de Recetas Online</strong>.
-          Indica que todos los campos son obligatorios excepto observaciones, y que
-          una vez lista la receta llega un e-mail de notificacion.
-          Completar la seccion <strong>Informacion Basica</strong>:
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/... — Formulario de Solicitud de Recetas Online</div>
-          <div class="content">
-            <div style="font-size:11px;color:var(--accent);line-height:1.6;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)">
-              Ingrese por favor los datos solicitados para poder confeccionar su receta.<br>
-              Verifique que los datos ingresados sean correctos antes de confirmar la solicitud.<br>
-              Una vez que este lista su receta, recibira un e-mail de notificacion para poder pasar a retirarla.<br>
-              <strong>TODOS LOS CAMPOS SON OBLIGATORIOS, excepto observaciones.</strong>
-            </div>
-            <div style="font-size:14px;font-weight:bold;margin-bottom:10px">Informacion Basica</div>
-            <div class="fields">
-              <div class="field">Nombre * <span class="field-hint">Nombre Completo</span></div>
-              <div class="field">Apellido(s) *</div>
-              <div class="field">E-Mail *</div>
-              <div class="field">Telefono Movil *</div>
-              <div class="field">Fecha de Nacimiento *</div>
-              <div class="field">Tipo de Identificacion<br><span class="field-hint">DNI</span></div>
-              <div class="field full">N° de Documento *</div>
-              <div class="field full">Sexo * &nbsp;○ Masculino &nbsp;○ Femenino &nbsp;○ Otro</div>
-              <div class="field">Cobertura Medica * <span class="field-hint">Seleccionar...</span></div>
-              <div class="field">Plan Medico</div>
-              <div class="field full">N° de Afiliado</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge">5</span>
-          <h2>Agregar el medicamento con "Anadir medicamento"</h2>
-        </div>
-        <p>
-          Debajo de los datos basicos esta la seccion <strong>Ingrese los datos para la
-          confeccion de la receta</strong>. Tocar el boton celeste <strong>Anadir medicamento</strong>,
-          escribir el nombre del farmaco en el buscador y seleccionar la presentacion.
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> Seccion medicamentos</div>
-          <div class="content">
-            <div style="font-size:13px;font-weight:bold;margin-bottom:10px">Ingrese los datos para la confeccion de la receta</div>
-
-            <div style="border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px">
-              <div style="font-size:13px;font-weight:bold;text-align:center;margin-bottom:8px">Medicamentos</div>
-              <div style="font-size:12px;color:var(--accent);margin-bottom:6px">
-                💊 QUIDEX (ciprofloxacina+dexametasona) gts.oft.x 5 ml &nbsp; ✕
-              </div>
-              <div style="font-size:11px;color:#5b6b7a;margin-bottom:6px">Aclaraciones del medicamento (Opcional)</div>
-              <div style="font-size:12px;text-align:center">
+    <div class="step">
+      <div class="step-num verde">6</div>
+      <div class="step-body">
+        <h3>Confirmar cantidad y enviar el pedido</h3>
+        <div class="screen">
+          <div class="screen-bar"><span class="dot"></span> Medicamentos seleccionados</div>
+          <div class="screen-inner">
+            <div style="border:1px solid #d1e3f8;border-radius:10px;padding:12px;text-align:center;margin-bottom:10px">
+              <div style="font-size:12px;font-weight:700;margin-bottom:6px">Medicamentos</div>
+              <div style="font-size:12px;color:#1c6fbe;margin-bottom:8px">💊 QUIDEX (ciprofloxacina+dexametasona) gts.oft.x 5 ml</div>
+              <div style="font-size:11px;color:#7a9ab5;margin-bottom:8px">Aclaraciones del medicamento (Opcional)</div>
+              <div style="font-size:13px">
                 Cantidad &nbsp;
-                <span style="background:#1c78d6;color:#fff;padding:2px 8px;border-radius:4px">−</span>
-                &nbsp;1&nbsp;
-                <span style="background:#1c78d6;color:#fff;padding:2px 8px;border-radius:4px">+</span>
+                <span style="background:#17a2b8;color:white;padding:3px 10px;border-radius:5px;font-weight:700">−</span>
+                &nbsp; 1 &nbsp;
+                <span style="background:#17a2b8;color:white;padding:3px 10px;border-radius:5px;font-weight:700">+</span>
               </div>
             </div>
-
-            <div style="text-align:center;margin-bottom:10px">
-              <span style="background:#17a2b8;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:bold">Anadir medicamento</span>
-            </div>
-            <div style="font-size:11px;color:#5b6b7a;margin-bottom:8px">
-              ☑ Al registrarse usted acepta los <u>Terminos y Condiciones</u> y las <u>Politicas de Privacidad</u>.
-            </div>
-            <div style="border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12px;color:#5b6b7a;margin-bottom:10px">Observaciones</div>
-            <div style="text-align:center">
-              <span class="cta">Enviar Solicitud de Receta</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-box" style="margin-top:12px">
-          <strong>Como buscar el medicamento:</strong><br>
-          Al tocar "Anadir medicamento" se abre un buscador. Escriba el nombre comercial o generico
-          (ej: "quidex", "tobradex", "timolol"). Aparecen las opciones con la presentacion disponible
-          (gotas, ungüento, etc.). Seleccionar la que corresponde.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge green">6</span>
-          <h2>Volver a WhatsApp y confirmar</h2>
-        </div>
-        <p>
-          Despues de tocar <strong>Enviar Solicitud de Receta</strong>, volver al chat de
-          WhatsApp e indicar que se hizo el pedido y que medicamento se necesita.
-        </p>
-        <div class="tip">
-          Mensaje sugerido:<br>
-          <em>"Ya me registre y ya hice el pedido de receta. Necesito [nombre del medicamento o gota]."</em>
-        </div>
-      </div>
-
-      <!-- Seccion B: ya registrado -->
-      <div class="section-title">Opcion 41 — Ya estoy registrado en RCTA</div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge green">1</span>
-          <h2>Abrir el link de pedido y completar "Informacion Basica"</h2>
-        </div>
-        <p>
-          Ir directamente al link de pedido de su profesional. Completar los datos
-          basicos y agregar el medicamento con el buscador. No hace falta ir al link de registro.
-        </p>
-        <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/... — Formulario de Solicitud de Recetas Online</div>
-          <div class="content">
-            <div class="fields">
-              <div class="field">Nombre *</div>
-              <div class="field">Apellido(s) *</div>
-              <div class="field">E-Mail *</div>
-              <div class="field">Telefono Movil *</div>
-              <div class="field">Fecha de Nacimiento *</div>
-              <div class="field">N° de Documento *</div>
-              <div class="field full">Cobertura Medica * + Plan Medico + N° de Afiliado</div>
-            </div>
-            <div style="margin-top:12px;font-size:12px;font-weight:bold">↓ Anadir medicamento → buscar → seleccionar presentacion</div>
-            <div style="margin-top:8px;text-align:center"><span class="cta">Enviar Solicitud de Receta</span></div>
+            <div style="font-size:11px;color:#5b7a99;margin-bottom:10px">☑ Acepto los Terminos y Condiciones y las Politicas de Privacidad.</div>
+            <div style="text-align:center"><span class="btn-sim azul">Enviar Solicitud de Receta</span></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="step">
-        <div class="step-header">
-          <span class="badge green">2</span>
-          <h2>Volver a WhatsApp y confirmar</h2>
-        </div>
-        <p>
-          Despues del pedido, volver al chat e indicar que se completo y que medicamento se necesita.
-        </p>
+    <div class="step">
+      <div class="step-num ok">7</div>
+      <div class="step-body">
+        <h3>Volver a WhatsApp y avisar</h3>
+        <p>Despues de enviar, volver al chat de WhatsApp del consultorio y escribir:</p>
         <div class="tip">
-          Mensaje sugerido:<br>
-          <em>"Ya hice el pedido de receta. Necesito [nombre del medicamento o gota]."</em>
+          <strong>✉️ Mensaje sugerido:</strong>
+          "Ya hice el pedido de receta. Necesito [nombre del medicamento o gota]."
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Seccion C: problemas -->
-      <div class="section-title">Opciones 6 / 43 — Problemas con el registro</div>
+  <hr class="divider">
 
-      <div class="step">
-        <div class="step-header">
-          <span class="badge orange">!</span>
-          <h2>Que informacion enviar al consultorio</h2>
-        </div>
-        <p>
-          Si no puede completar el registro, vuelva al chat de WhatsApp y responda
-          <strong>6</strong> desde el menu principal, o <strong>43</strong> si ya esta en el
-          subflujo de recetas. El bot le va a pedir estos datos:
+  <!-- AYUDA -->
+  <div class="section">
+    <div class="section-header" style="color:#d97706;border-color:#d97706">
+      <span style="font-size:22px">🙋</span>
+      <h2>¿Tiene problemas o prefiere hablar con alguien?</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="border:2px solid #f0a500;border-radius:14px;padding:16px;background:#fffbf0">
+        <div style="font-size:26px;margin-bottom:8px">🤖</div>
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:8px">Desde el bot de WhatsApp</h3>
+        <p style="font-size:12px;color:#78400a;line-height:1.7">
+          Responda <strong>6</strong> si tuvo un problema con el registro.<br>
+          Responda <strong>0</strong> al final de cualquier mensaje del bot para hablar con la secretaria directamente.
         </p>
-        <div class="warn-box">
-          <strong>Incluya en su mensaje:</strong><br>
-          • Nombre y apellido completo<br>
-          • Medico que lo atiende (Dra. Berney o Dr. Torrado)<br>
-          • Medicamento o gota que necesita<br>
-          • En que paso del registro se trabo (ej: "no me deja enviar el formulario")
-        </div>
       </div>
-
-      <!-- Seccion D: secretaria -->
-      <div class="section-title">Opcion 0 — Hablar con la secretaria</div>
-
-      <div class="step">
-        <div class="step-header">
-          <span class="badge orange">0</span>
-          <h2>Pasar a atencion humana</h2>
-        </div>
-        <p>
-          En cualquier respuesta del bot aparece la opcion <strong>0</strong> al final del
-          mensaje. Al tocarla, el bot deja de responder automaticamente y la secretaria
-          toma el chat. Para volver al menu automatico, escriba <strong>menu</strong> o
-          <strong>volver</strong>.
+      <div style="border:2px solid #f0a500;border-radius:14px;padding:16px;background:#fffbf0">
+        <div style="font-size:26px;margin-bottom:8px">📞</div>
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:8px">Llamar o escribir</h3>
+        <p style="font-size:12px;color:#78400a;line-height:1.7">
+          <strong>Tel fijo:</strong> (02284) 416078<br>
+          <strong>WhatsApp:</strong> (02284) 594020<br><br>
+          Indicar nombre, medico, medicamento y en que paso tuvo el problema.
         </p>
-        <div class="info-box">
-          <strong>Cuando conviene usar la opcion 0:</strong><br>
-          • Turno urgente o fuera del horario habitual<br>
-          • Consulta que el bot no puede resolver<br>
-          • Estudios o cirugias que no se pueden sacar por DocTurno<br>
-          • Cualquier situacion que necesite respuesta personalizada
-        </div>
       </div>
+    </div>
+  </div>
 
-      <div class="footer">
-        <span>Consultorio Torrado &amp; Berney — Vicente Lopez 2061, Olavarria</span>
-        <span>Tel (02284) 416078 · WhatsApp (02284) 594020</span>
-      </div>
+  <div class="footer">
+    <span>Consultorio Torrado &amp; Berney · Vicente Lopez 2061, Olavarria, Buenos Aires</span>
+    <span>RCTA v1.19.1</span>
+  </div>
 
-    </main>
-  </body>
+</div>
+</body>
 </html>
