@@ -301,17 +301,23 @@
       <div class="step">
         <div class="step-header">
           <span class="badge">1</span>
-          <h2>Abrir el link de registro de su profesional</h2>
+          <h2>Abrir el link — pantalla "Su Doctor Necesita Sus Datos"</h2>
         </div>
         <p>
-          El bot le envia el link de registro segun el medico que le atiende. Al abrirlo
-          vera una pantalla de bienvenida de RCTA. Toque el boton principal para continuar.
+          Al abrir el link de registro aparece la foto del profesional con este texto:<br>
+          <em>"[Profesional] solicita que complete sus datos para poder empezar a enviarle
+          sus recetas medicas de manera mas agil y personalizada."</em><br>
+          Tocar el boton azul para continuar.
         </p>
         <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me</div>
-          <div class="content">
-            <div class="screen-title">Su medico necesita sus datos</div>
-            <p style="font-size:13px;color:#5b6b7a">Complete sus datos para recibir recetas digitales de forma rapida y segura.</p>
+          <div class="bar"><span class="dot blue"></span> app.rcta.me — RCTA v1.19.1</div>
+          <div class="content" style="text-align:center;padding:20px 16px">
+            <div style="width:72px;height:72px;border-radius:50%;background:#c8e6f7;margin:0 auto 12px"></div>
+            <div class="screen-title">Su Doctor Necesita Sus Datos</div>
+            <p style="font-size:12px;color:#5b6b7a;max-width:340px;margin:8px auto 16px">
+              Dr/a. [Nombre del profesional] solicita que complete sus datos para poder
+              empezar a enviarle sus recetas medicas de manera mas agil y personalizada.
+            </p>
             <span class="cta">Ingresar mis datos</span>
           </div>
         </div>
@@ -320,26 +326,36 @@
       <div class="step">
         <div class="step-header">
           <span class="badge">2</span>
-          <h2>Completar el formulario con sus datos</h2>
+          <h2>Completar el formulario "Datos del paciente"</h2>
         </div>
         <p>
-          Llene todos los campos obligatorios. La foto de perfil y el email suelen
-          ser opcionales — puede dejarlos vacios si el sistema lo permite.
+          Completar todos los campos con asterisco (*). La foto de perfil y el e-mail
+          son opcionales. Al final tildar la casilla de terminos y tocar <strong>Enviar</strong>.
         </p>
         <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> Formulario RCTA</div>
+          <div class="bar"><span class="dot blue"></span> Datos del paciente — RCTA v1.19.1</div>
           <div class="content">
             <div class="screen-title">Datos del paciente</div>
+            <p style="font-size:11px;color:#5b6b7a;margin-bottom:12px">
+              Complete sus datos para sumarse a la cartilla de pacientes del Dr/a. [Profesional]
+            </p>
+            <div style="font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;color:#5b6b7a;margin-bottom:12px">
+              Subir Imagen de Perfil — <em style="font-size:11px">opcional, se usa para reconocer al paciente mas rapidamente</em>
+            </div>
             <div class="fields">
-              <div class="field">Nombre</div>
-              <div class="field">Apellido</div>
-              <div class="field">Telefono celular</div>
-              <div class="field">Fecha de nacimiento</div>
-              <div class="field">Tipo de documento</div>
-              <div class="field">Numero de documento</div>
-              <div class="field full">Obra social / Cobertura medica</div>
-              <div class="field full optional">Email (opcional)</div>
-              <div class="field full optional">Foto de perfil (opcional)</div>
+              <div class="field">Nombre *</div>
+              <div class="field">Apellido(s) *</div>
+              <div class="field optional">E-Mail (Opcional)</div>
+              <div class="field">Telefono Movil</div>
+              <div class="field">Fecha de Nacimiento *</div>
+              <div class="field">Tipo de Identificacion<br><span class="field-hint">DNI (seleccion)</span></div>
+              <div class="field full">N° de Documento *</div>
+              <div class="field full">Sexo * &nbsp;○ Masculino &nbsp;○ Femenino &nbsp;○ Otro</div>
+              <div class="field full">Cobertura Medica * (desplegable — Seleccionar...)</div>
+              <div class="field full optional">Observaciones</div>
+            </div>
+            <div style="font-size:11px;color:#5b6b7a;margin:10px 0 8px">
+              ☐ Al registrarse usted acepta los <u>Terminos y Condiciones</u> y las <u>Politicas de Privacidad</u>.
             </div>
             <span class="cta">Enviar</span>
           </div>
@@ -349,14 +365,14 @@
       <div class="step">
         <div class="step-header">
           <span class="badge green">3</span>
-          <h2>Confirmacion: datos cargados correctamente</h2>
+          <h2>Confirmacion: "Datos cargados correctamente"</h2>
         </div>
         <p>
-          Cuando vea esta pantalla, el alta ya termino. No hace falta repetir este
-          paso en el futuro — solo va a necesitar el link de pedido de receta.
+          Cuando aparece esta pantalla, el alta en RCTA ya termino.
+          No hace falta repetir este paso — solo necesitara el link de pedido de receta de ahora en mas.
         </p>
         <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> Confirmacion</div>
+          <div class="bar"><span class="dot blue"></span> Confirmacion RCTA</div>
           <div class="content success">
             <div class="check">✓</div>
             <div class="screen-title">Datos cargados correctamente</div>
@@ -368,18 +384,37 @@
       <div class="step">
         <div class="step-header">
           <span class="badge">4</span>
-          <h2>Pedir la receta desde el link del profesional</h2>
+          <h2>Abrir el link de pedido y completar "Informacion Basica"</h2>
         </div>
         <p>
-          Ahora use el segundo link (pedido de receta) para solicitar el medicamento
-          o gota que necesita. Busque a su profesional y complete la solicitud.
+          El formulario se llama <strong>Formulario de Solicitud de Recetas Online</strong>.
+          Indica que todos los campos son obligatorios excepto observaciones, y que
+          una vez lista la receta llega un e-mail de notificacion.
+          Completar la seccion <strong>Informacion Basica</strong>:
         </p>
         <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/...</div>
+          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/... — Formulario de Solicitud de Recetas Online</div>
           <div class="content">
-            <div class="screen-title">Pedir receta</div>
-            <p style="font-size:13px;color:#5b6b7a">Seleccione el medicamento o escriba el nombre de la gota o farmaco.</p>
-            <span class="cta green">Solicitar receta</span>
+            <div style="font-size:11px;color:var(--accent);line-height:1.6;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)">
+              Ingrese por favor los datos solicitados para poder confeccionar su receta.<br>
+              Verifique que los datos ingresados sean correctos antes de confirmar la solicitud.<br>
+              Una vez que este lista su receta, recibira un e-mail de notificacion para poder pasar a retirarla.<br>
+              <strong>TODOS LOS CAMPOS SON OBLIGATORIOS, excepto observaciones.</strong>
+            </div>
+            <div style="font-size:14px;font-weight:bold;margin-bottom:10px">Informacion Basica</div>
+            <div class="fields">
+              <div class="field">Nombre * <span class="field-hint">Nombre Completo</span></div>
+              <div class="field">Apellido(s) *</div>
+              <div class="field">E-Mail *</div>
+              <div class="field">Telefono Movil *</div>
+              <div class="field">Fecha de Nacimiento *</div>
+              <div class="field">Tipo de Identificacion<br><span class="field-hint">DNI</span></div>
+              <div class="field full">N° de Documento *</div>
+              <div class="field full">Sexo * &nbsp;○ Masculino &nbsp;○ Femenino &nbsp;○ Otro</div>
+              <div class="field">Cobertura Medica * <span class="field-hint">Seleccionar...</span></div>
+              <div class="field">Plan Medico</div>
+              <div class="field full">N° de Afiliado</div>
+            </div>
           </div>
         </div>
       </div>
@@ -387,11 +422,61 @@
       <div class="step">
         <div class="step-header">
           <span class="badge">5</span>
+          <h2>Agregar el medicamento con "Anadir medicamento"</h2>
+        </div>
+        <p>
+          Debajo de los datos basicos esta la seccion <strong>Ingrese los datos para la
+          confeccion de la receta</strong>. Tocar el boton celeste <strong>Anadir medicamento</strong>,
+          escribir el nombre del farmaco en el buscador y seleccionar la presentacion.
+        </p>
+        <div class="mock-screen">
+          <div class="bar"><span class="dot blue"></span> Seccion medicamentos</div>
+          <div class="content">
+            <div style="font-size:13px;font-weight:bold;margin-bottom:10px">Ingrese los datos para la confeccion de la receta</div>
+
+            <div style="border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px">
+              <div style="font-size:13px;font-weight:bold;text-align:center;margin-bottom:8px">Medicamentos</div>
+              <div style="font-size:12px;color:var(--accent);margin-bottom:6px">
+                💊 QUIDEX (ciprofloxacina+dexametasona) gts.oft.x 5 ml &nbsp; ✕
+              </div>
+              <div style="font-size:11px;color:#5b6b7a;margin-bottom:6px">Aclaraciones del medicamento (Opcional)</div>
+              <div style="font-size:12px;text-align:center">
+                Cantidad &nbsp;
+                <span style="background:#1c78d6;color:#fff;padding:2px 8px;border-radius:4px">−</span>
+                &nbsp;1&nbsp;
+                <span style="background:#1c78d6;color:#fff;padding:2px 8px;border-radius:4px">+</span>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-bottom:10px">
+              <span style="background:#17a2b8;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:bold">Anadir medicamento</span>
+            </div>
+            <div style="font-size:11px;color:#5b6b7a;margin-bottom:8px">
+              ☑ Al registrarse usted acepta los <u>Terminos y Condiciones</u> y las <u>Politicas de Privacidad</u>.
+            </div>
+            <div style="border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12px;color:#5b6b7a;margin-bottom:10px">Observaciones</div>
+            <div style="text-align:center">
+              <span class="cta">Enviar Solicitud de Receta</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box" style="margin-top:12px">
+          <strong>Como buscar el medicamento:</strong><br>
+          Al tocar "Anadir medicamento" se abre un buscador. Escriba el nombre comercial o generico
+          (ej: "quidex", "tobradex", "timolol"). Aparecen las opciones con la presentacion disponible
+          (gotas, ungüento, etc.). Seleccionar la que corresponde.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="badge green">6</span>
           <h2>Volver a WhatsApp y confirmar</h2>
         </div>
         <p>
-          Despues de completar el pedido, vuelva al chat de WhatsApp del consultorio
-          y escriba que medicamento o gota necesita.
+          Despues de tocar <strong>Enviar Solicitud de Receta</strong>, volver al chat de
+          WhatsApp e indicar que se hizo el pedido y que medicamento se necesita.
         </p>
         <div class="tip">
           Mensaje sugerido:<br>
@@ -405,18 +490,26 @@
       <div class="step">
         <div class="step-header">
           <span class="badge green">1</span>
-          <h2>Abrir el link de pedido de su profesional</h2>
+          <h2>Abrir el link de pedido y completar "Informacion Basica"</h2>
         </div>
         <p>
-          Si ya se registro antes, vaya directamente al link de pedido de receta.
-          No necesita registrarse de nuevo.
+          Ir directamente al link de pedido de su profesional. Completar los datos
+          basicos y agregar el medicamento con el buscador. No hace falta ir al link de registro.
         </p>
         <div class="mock-screen">
-          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/...</div>
+          <div class="bar"><span class="dot blue"></span> app.rcta.me/p/... — Formulario de Solicitud de Recetas Online</div>
           <div class="content">
-            <div class="screen-title">Solicitar receta</div>
-            <p style="font-size:13px;color:#5b6b7a">Ingrese el medicamento o gota que necesita y envielo.</p>
-            <span class="cta green">Enviar pedido</span>
+            <div class="fields">
+              <div class="field">Nombre *</div>
+              <div class="field">Apellido(s) *</div>
+              <div class="field">E-Mail *</div>
+              <div class="field">Telefono Movil *</div>
+              <div class="field">Fecha de Nacimiento *</div>
+              <div class="field">N° de Documento *</div>
+              <div class="field full">Cobertura Medica * + Plan Medico + N° de Afiliado</div>
+            </div>
+            <div style="margin-top:12px;font-size:12px;font-weight:bold">↓ Anadir medicamento → buscar → seleccionar presentacion</div>
+            <div style="margin-top:8px;text-align:center"><span class="cta">Enviar Solicitud de Receta</span></div>
           </div>
         </div>
       </div>
@@ -427,8 +520,7 @@
           <h2>Volver a WhatsApp y confirmar</h2>
         </div>
         <p>
-          Despues del pedido, vuelva al chat y escriba que necesita para que el consultorio
-          pueda procesar la receta.
+          Despues del pedido, volver al chat e indicar que se completo y que medicamento se necesita.
         </p>
         <div class="tip">
           Mensaje sugerido:<br>
