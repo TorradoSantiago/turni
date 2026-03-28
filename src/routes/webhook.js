@@ -21,8 +21,7 @@ En que te puedo ayudar?
 3. Cancelar o reprogramar turno
 4. Recetas digitales
 5. Factura digital
-6. Problemas con el registro de recetas
-7. Otra consulta`;
+6. Otra consulta`;
 
 const SECRETARIA_ESCAPE = `\n\nSi prefiere hablar con la secretaria, responda *0*`;
 
@@ -81,7 +80,10 @@ https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-m
 Estudios o cirugia:
 comunicarse directamente con el consultorio.
 Tel fijo: (02284) 416078
-WhatsApp: (02284) 594020` + SECRETARIA_ESCAPE,
+WhatsApp: (02284) 594020
+
+Si necesita ayuda para sacar el turno, le dejamos esta guia paso a paso:
+${GUIA_SACAR_TURNO_URL}` + SECRETARIA_ESCAPE,
 
   '3': `*Cancelar o reprogramar turno*
 
@@ -98,7 +100,10 @@ https://paciente.docturno.com/agenda/consultorio-dra-berney-paula/berney-paula-m
 
 Si usted saco el turno via secretaria, cancelelo o reprogramelo directamente con ella por WhatsApp o llamando al fijo:
 WhatsApp: (02284) 594020
-Tel fijo: (02284) 416078` + SECRETARIA_ESCAPE,
+Tel fijo: (02284) 416078
+
+Si necesita ayuda para cancelar o reprogramar desde DocTurno, le dejamos esta guia:
+${GUIA_CANCELAR_TURNO_URL}` + SECRETARIA_ESCAPE,
 
   '4': `*Recetas digitales*
 
@@ -107,7 +112,7 @@ Para continuar, responda:
 41. Ya estoy registrado en RCTA
 42. Todavia no estoy registrado en RCTA
 
-Si tiene problemas con el registro, responda con 6 y le enviamos una guia paso a paso.` + SECRETARIA_ESCAPE,
+Si tiene problemas con el registro, responda con 43 y le enviamos una guia paso a paso.` + SECRETARIA_ESCAPE,
 
   '41': `*Recetas digitales - Ya estoy registrado*
 
@@ -146,16 +151,14 @@ Despues del pedido, escriba en este chat que medicamento o gota necesita.` + SEC
 Esta funcion estara disponible proximamente.
 Por ahora, solicite su factura llamando al (02284) 416078 o escribiendo su nombre completo y DNI y se la enviamos.` + SECRETARIA_ESCAPE,
 
-  '6': `*Problemas con el registro de recetas*
+  '6': `*Contacto y direccion*
 
-Le dejamos una guia paso a paso para completar el alta en RCTA:
-${GUIA_RECETAS_URL}
+Consultorio Torrado & Berney
+Vicente Lopez 2061, Olavarria, Buenos Aires
+Tel fijo: (02284) 416078
+WhatsApp: (02284) 594020
 
-Si despues de eso sigue con problemas, escriba en este chat:
-- nombre y apellido
-- medico que lo atiende
-- que medicamento o gota necesita
-- en que paso del registro se trabo` + SECRETARIA_ESCAPE,
+Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.` + SECRETARIA_ESCAPE,
 
   '43': `*Problemas con el registro de recetas*
 
