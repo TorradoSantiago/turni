@@ -10,6 +10,8 @@ const RCTA_TORRADO_URL = 'https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a
 const RCTA_BERNEY_RECETA_URL = 'https://app.rcta.me/p/paula-marcela-berney';
 const RCTA_TORRADO_RECETA_URL = 'https://app.rcta.me/p/pablo-augusto-torrado-16';
 const GUIA_RECETAS_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia%20-%20Registro%20Recetas%20RCTA.pdf';
+const GUIA_SACAR_TURNO_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia-ComoSacarTurno.pdf';
+const GUIA_CANCELAR_TURNO_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia-CancelarTurno.pdf';
 
 const MENU = `Hola. Soy el asistente del consultorio Torrado & Berney.
 En que te puedo ayudar?
