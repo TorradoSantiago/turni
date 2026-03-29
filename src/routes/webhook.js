@@ -5,13 +5,19 @@ const whatsapp = require('../services/whatsapp');
 // Numeros que eligieron hablar con la secretaria — el bot no responde hasta que escriban "menu" o "volver"
 const esperandoSecretaria = new Set();
 
+const esperandoRecetas = new Set();
+
+const OPCIONES_PRINCIPALES = new Set(['0', '1', '2', '3', '4', '5', '6']);
+const OPCIONES_RECETAS = new Set(['41', '42', '43']);
+const COMANDOS_MENU = new Set(['menu', 'volver', 'volver al menu']);
+
 const RCTA_BERNEY_URL = 'https://app.rcta.me/patients/6840e09ec76fe753d2590009d6007ccfd2cc64ac';
 const RCTA_TORRADO_URL = 'https://app.rcta.me/patients/50ddbd37b334c9e6a2af2ad9a0e1928158e8f7b0';
 const RCTA_BERNEY_RECETA_URL = 'https://app.rcta.me/p/paula-marcela-berney';
 const RCTA_TORRADO_RECETA_URL = 'https://app.rcta.me/p/pablo-augusto-torrado-16';
 const GUIA_RECETAS_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia%20-%20Registro%20Recetas%20RCTA.pdf';
 const GUIA_SACAR_TURNO_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia-ComoSacarTurno.pdf';
-const GUIA_CANCELAR_TURNO_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia-CancelarTurno.pdf';
+const GUIA_CANCELAR_TURNO_URL = 'https://raw.githubusercontent.com/TorradoSantiago/turni/main/Guia-CancelarTurno-v2.pdf';
 
 const MENU = `Hola. Soy Turni, el asistente del consultorio del Dr. Torrado y la Dra. Berney.
 En que te puedo ayudar? Estoy aqui para ayudarte con turnos, recetas y consultas generales.
@@ -154,15 +160,6 @@ y que medicamento o gota necesita en este chat asi aceptamos su solicitud.` + SE
 Solicite su factura escribiendo su nombre y apellido completo, DNI y el profesional con el
 que fue atendido y le enviaremos la factura.` + SECRETARIA_ESCAPE,
 
-  '6': `*Contacto y direccion*
-
-Consultorio del Dr. Torrado y la Dra. Berney
-Vicente Lopez 2061, Olavarria, Buenos Aires
-Tel fijo: (02284) 416078
-WhatsApp - Solo mensajes: (02284) 594020
-
-Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.` + SECRETARIA_ESCAPE,
-
   '43': `*Problemas con el registro de recetas*
 
 Le dejamos una guia paso a paso para completar el alta en RCTA:
@@ -174,7 +171,7 @@ Si despues de eso sigue con problemas, escriba en este chat:
 - que medicamento o gota necesita
 - en que paso del registro se trabo` + SECRETARIA_ESCAPE,
 
-  '7': `*Contacto y direccion*
+  '6': `*Contacto y direccion*
 
 Consultorio del Dr. Torrado y la Dra. Berney
 Vicente Lopez 2061, Olavarria, Buenos Aires
@@ -184,9 +181,21 @@ WhatsApp - Solo mensajes: (02284) 594020
 Para cualquier otra consulta, escriba su mensaje y le responderemos a la brevedad.` + SECRETARIA_ESCAPE,
 };
 
-function obtenerRespuesta(texto) {
+function normalizarTexto(texto) {
+  return texto
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
+function esComandoMenu(texto) {
+  return COMANDOS_MENU.has(normalizarTexto(texto));
+}
+
+function obtenerRespuesta(texto, { enSubmenuRecetas = false } = {}) {
   const limpio = texto.trim();
-  return RESPUESTAS[limpio] || MENU;
+  return RESPUESTAS[limpio] || (enSubmenuRecetas ? RESPUESTAS['4'] : MENU);
 }
 
 router.get('/', (req, res) => {
@@ -217,31 +226,52 @@ router.post('/', async (req, res) => {
 
     if (message.type !== 'text') {
       if (!esperandoSecretaria.has(from)) {
-        await whatsapp.sendTextMessage(from, MENU);
+        const respuesta = esperandoRecetas.has(from) ? RESPUESTAS['4'] : MENU;
+        await whatsapp.sendTextMessage(from, respuesta);
       }
       return;
     }
 
     const texto = message.text.body;
+    const limpio = texto.trim();
     console.log(`Mensaje de ${from}: "${texto}"`);
 
-    // Si el paciente eligio hablar con la secretaria, solo reaccionar a "menu" o "volver"
-    if (esperandoSecretaria.has(from)) {
-      const limpio = texto.trim().toLowerCase();
-      if (limpio === 'menu' || limpio === 'volver' || limpio === 'volver al menu') {
-        esperandoSecretaria.delete(from);
-        await whatsapp.sendTextMessage(from, MENU);
-        console.log(`${from} volvio al menu`);
-      }
+    if (esComandoMenu(texto)) {
+      esperandoSecretaria.delete(from);
+      esperandoRecetas.delete(from);
+      await whatsapp.sendTextMessage(from, MENU);
+      console.log(`${from} volvio al menu`);
       return;
     }
 
-    const respuesta = obtenerRespuesta(texto);
+    if (esperandoSecretaria.has(from)) {
+      return;
+    }
 
-    // Si eligio opcion 0, activar modo secretaria
-    if (texto.trim() === '0') {
+    const eligioOpcionReceta = OPCIONES_RECETAS.has(limpio);
+
+    if (limpio === '0') {
       esperandoSecretaria.add(from);
+      esperandoRecetas.delete(from);
       console.log(`${from} eligio hablar con la secretaria`);
+    } else if (limpio === '4') {
+      esperandoRecetas.add(from);
+      console.log(`${from} entro al submenu de recetas`);
+    } else if (eligioOpcionReceta && !esperandoRecetas.has(from)) {
+      esperandoRecetas.add(from);
+      await whatsapp.sendTextMessage(from, RESPUESTAS['4']);
+      console.log(`${from} intento usar el submenu de recetas sin entrar por la opcion 4`);
+      return;
+    } else if (OPCIONES_PRINCIPALES.has(limpio)) {
+      esperandoRecetas.delete(from);
+    }
+
+    const respuesta = obtenerRespuesta(texto, {
+      enSubmenuRecetas: esperandoRecetas.has(from),
+    });
+
+    if (eligioOpcionReceta) {
+      esperandoRecetas.delete(from);
     }
 
     await whatsapp.sendTextMessage(from, respuesta);
